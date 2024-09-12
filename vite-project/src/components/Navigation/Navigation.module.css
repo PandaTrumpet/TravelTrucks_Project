@@ -1,0 +1,39 @@
+.navigation {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.title {
+    color: #101828;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.titleSpan {
+    color: #475467;
+}
+
+.navLink {
+    display: flex;
+    gap: 32px;
+    margin-left: 450px;
+
+}
+
+.link {
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #101828;
+    text-decoration: none;
+}
+
+.active {
+    color: #E44848;
+}
