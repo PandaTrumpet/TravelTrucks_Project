@@ -1,0 +1,23 @@
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.checkboxContainer.active {
+    border-color: red;
+}
+
+.hiddenCheckbox {
+    display: none;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.text {
+    font-size: 16px;
+}

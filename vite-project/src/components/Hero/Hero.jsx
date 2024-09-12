@@ -10,7 +10,6 @@ export default function Hero() {
         </p>
         <button className={css.btn}>
           <Link to="/catalog" className={css.btnLink}>
-            {" "}
             View Now
           </Link>
         </button>
