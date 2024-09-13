@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
-import { showCars, showCarsId } from "../../components/fetchCars.js";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCars } from "../../Redux/cars/operation.js";
+import { carsSelector } from "../../redux/cars/selectors.js";
 export default function CatalogPage() {
-  const [cars, setCars] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    // const fetchCars = async () => {
-    //   const data = await showCars();
-    //   console.log(data);
+    dispatch(fetchCars());
+  }, [dispatch]);
+  const selectCars = useSelector(carsSelector);
+  console.log(selectCars);
 
-    //   if (data) {
-    //     setCars(data);
-    //   }
-    // };
-
-    // fetchCars();
-    const fetchCars = async () => {
-      const data = await showCarsId(2);
-      console.log(data);
-    };
-    fetchCars();
-  }, []);
   return (
     <>
       <Sidebar />
