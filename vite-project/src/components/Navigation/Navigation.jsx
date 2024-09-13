@@ -10,14 +10,18 @@ export default function Navigation() {
       <NavLink to="/" className={css.title}>
         Travel<span className={css.titleSpan}>Tracks</span>
       </NavLink>
-      <div className={css.navLink}>
-        <NavLink to="/" className={linkClass}>
-          Home
-        </NavLink>
-        <NavLink to="/catalog" className={linkClass}>
-          Catalog
-        </NavLink>
-      </div>
+      <ul className={css.navLink}>
+        <li>
+          <NavLink to="/" className={linkClass}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/catalog" className={linkClass}>
+            Catalog
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 }

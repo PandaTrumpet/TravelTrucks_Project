@@ -1,6 +1,7 @@
 import css from "./Car.module.css";
 import sprite from "../../images/sprite.svg";
 import { Link } from "react-router-dom";
+
 export default function Car({ car }) {
   // console.log(car.id);
 
@@ -24,7 +25,7 @@ export default function Car({ car }) {
             </div>
           </div>
         </div>
-        <div className={css.detalis}>
+        <div className={css.details}>
           <svg className={css.iconStar}>
             <use href={`${sprite}#icon-star`}></use>
           </svg>

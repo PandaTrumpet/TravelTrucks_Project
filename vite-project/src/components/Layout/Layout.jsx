@@ -3,7 +3,9 @@ import Navigation from "../Navigation/Navigation.jsx";
 export default function Layout({ children }) {
   return (
     <>
-      <Navigation />
+      <header>
+        <Navigation />
+      </header>
       {children}
     </>
   );

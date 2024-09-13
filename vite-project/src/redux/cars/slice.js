@@ -5,6 +5,7 @@ const carsSlice = createSlice({
   name: "cars",
   initialState: {
     items: [],
+    car: {},
     loading: false,
     error: false,
   },
@@ -14,7 +15,7 @@ const carsSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchCarId.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.car = action.payload;
       });
   },
 });
