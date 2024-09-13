@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "./operation.js";
+import { fetchCarId, fetchCars } from "./operation.js";
 
 const carsSlice = createSlice({
   name: "cars",
@@ -9,9 +9,13 @@ const carsSlice = createSlice({
     error: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCars.fulfilled, (state, action) => {
-      state.items = action.payload;
-    });
+    builder
+      .addCase(fetchCars.fulfilled, (state, action) => {
+        state.items = action.payload;
+      })
+      .addCase(fetchCarId.fulfilled, (state, action) => {
+        state.items = action.payload;
+      });
   },
 });
 export default carsSlice.reducer;

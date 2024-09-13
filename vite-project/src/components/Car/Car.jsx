@@ -1,7 +1,8 @@
 import css from "./Car.module.css";
 import sprite from "../../images/sprite.svg";
+import { Link } from "react-router-dom";
 export default function Car({ car }) {
-  console.log(car);
+  // console.log(car.id);
 
   const picture = car;
 
@@ -53,6 +54,7 @@ export default function Car({ car }) {
             <p></p>
           </li>
         </ul> */}
+        <Link to={`/catalog/${car.id}`}>Show more</Link>
       </div>
     </div>
   );
