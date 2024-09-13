@@ -7,9 +7,18 @@
 .picture {
     width: 292px;
     height: 320px;
-    background-position: center;
+    background-size: cover;
+    background-position: center top;
+    border-radius: 10px;
 
 }
+
+/* backgroundPosition: 'center',
+// Центрирует изображение
+width: '100%',
+// Устанавливает ширину div
+height: '300px',
+// Устанавливает высоту div */
 
 .iconHeart {
     width: 24px;
@@ -51,4 +60,40 @@
     font-size: 24px;
     line-height: 133%;
     color: var(--main);
+}
+
+.iconStar {
+    width: 16px;
+    height: 16px;
+    fill: var(--rating);
+    margin-right: 4px;
+}
+
+.mainInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.iconMap {
+    stroke: var(--main);
+    width: 20px;
+    height: 20px;
+    margin-left: 16px;
+    margin-right: 4px;
+}
+
+.detalis {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.description {
+    margin-bottom: 24px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--text);
 }
