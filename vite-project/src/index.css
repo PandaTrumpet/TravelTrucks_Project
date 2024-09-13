@@ -133,6 +133,12 @@ button {
   cursor: pointer;
 }
 
+image {
+  display: block;
+  width: 100%;
+
+}
+
 /* .page-loader {
   position: absolute;
   top: 50%;

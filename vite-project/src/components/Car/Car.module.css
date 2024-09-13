@@ -1,0 +1,54 @@
+.container {
+    padding: 24px;
+    display: inline-flex;
+    gap: 24px;
+}
+
+.picture {
+    width: 292px;
+    height: 320px;
+    background-position: center;
+
+}
+
+.iconHeart {
+    width: 24px;
+    height: 21px;
+    transition: fill 200ms ease-in-out;
+}
+
+.iconHeart:hover {
+    fill: var(--button);
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.priceContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.infoContainer {
+    width: 524px;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+}
+
+.price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+}
