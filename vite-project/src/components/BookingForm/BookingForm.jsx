@@ -55,17 +55,20 @@ export default function BookingForm() {
   };
 
   return (
-    <div>
-      <h3>Book your campervan now</h3>
-      <p>Stay connected! We are always ready to help you.</p>
+    <div className={css.formContainer}>
+      <h3 className={css.formTitle}>Book your campervan now</h3>
+      <p className={css.formText}>
+        Stay connected! We are always ready to help you.
+      </p>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
+        <Form className={css.form}>
           <label htmlFor={nameId}>
             <Field
               type="text"
               name="name"
               id={nameId}
-              placeholder="Name" // Плейсхолдер для имени
+              placeholder="Name"
+              className={css.input}
             />
           </label>
           <label htmlFor={emailId}>
@@ -73,16 +76,18 @@ export default function BookingForm() {
               type="text"
               name="email"
               id={emailId}
-              placeholder="Enter your email" // Плейсхолдер для email
+              placeholder="Enter your email"
+              className={css.input}
             />
           </label>
           <label htmlFor={dateId}>
             <Field
-              type="date"
+              type="text"
               id={dateId}
               name="date"
-              values={initialValues.date}
-              placeholder="Select a date" // Плейсхолдер для даты (может не отображаться в большинстве браузеров для поля даты)
+              initialValues={initialValues.date}
+              placeholder="Booking date*"
+              className={css.input}
             />
           </label>
           <label htmlFor={textareaId}>
@@ -91,10 +96,12 @@ export default function BookingForm() {
               component="textarea"
               id={textareaId}
               name="message"
-              placeholder="Write your message here" // Плейсхолдер для текстового поля
+              placeholder="Comment" // Плейсхолдер для текстового поля
             />
           </label>
-          <button type="submit">Send</button>
+          <button type="submit" className={css.btn}>
+            Send
+          </button>
         </Form>
       </Formik>
     </div>

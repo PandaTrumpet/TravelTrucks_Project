@@ -3,3 +3,50 @@
     padding-left: 64px;
     padding-right: 64px;
 }
+
+.list {
+    display: flex;
+    gap: 40px;
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+    padding-bottom: 24px;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+
+    height: 5px;
+    background-color: var(--button);
+
+    border-radius: 2px;
+    transition: width 0.3s ease-in-out, right 0.3s ease-in-out;
+    /* Переход для ширины и позиции */
+}
+
+
+
+.link.active::after {
+    width: 100%;
+
+}
+
+/* .link.inactive::after {
+    width: 0%;
+
+} */
+
+/* .formContainer {
+    display: flex;
+    justify-content: right;
+} */

@@ -1,5 +1,6 @@
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import clsx from "clsx";
 import css from "./CatalogCamper.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarId } from "../../Redux/cars/operation.js";
@@ -15,21 +16,27 @@ export default function CatalogCamper() {
   }, [dispatch, id]);
   // const car = useSelector(oneCarSelector);
   // console.log(car);
-
+  const activeClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
     <div className={css.container}>
       <div>
         <CarInformation />
       </div>
-      <ul>
+      <ul className={css.list}>
         <li>
-          <NavLink to="features">Features</NavLink>
+          <NavLink to="features" className={activeClass}>
+            Features
+          </NavLink>
         </li>
         <li>
-          <NavLink to="reviews">Reviews </NavLink>
+          <NavLink to="reviews" className={activeClass}>
+            Reviews{" "}
+          </NavLink>
         </li>
       </ul>
-      <div>
+      <div className={css.formContainer}>
         <BookingForm />
       </div>
       <Outlet />
