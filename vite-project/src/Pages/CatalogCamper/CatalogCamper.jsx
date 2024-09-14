@@ -12,13 +12,13 @@ export default function CatalogCamper() {
   useEffect(() => {
     dispatch(fetchCarId(id));
   }, [dispatch, id]);
-  const car = useSelector(oneCarSelector);
-  console.log(car);
+  // const car = useSelector(oneCarSelector);
+  // console.log(car);
 
   return (
     <div className={css.container}>
       <div>
-        <CarInformation car={car} />
+        <CarInformation />
       </div>
       <ul>
         <li>

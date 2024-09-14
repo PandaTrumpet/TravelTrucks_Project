@@ -1,11 +1,22 @@
 import css from "./CarInformation.module.css";
 import sprite from "../../images/sprite.svg";
-export default function CarInformation({ car }) {
-  //   console.log(car.gallery);
-  //   const foto = car.gallery.map((car) => console.log(car.original));
-  const photos = car.gallery;
-  console.log(car);
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchCarId } from "../../Redux/cars/operation.js";
+import { oneCarSelector } from "../../redux/cars/selectors.js";
+export default function CarInformation() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(fetchCarId(id));
+  }, [dispatch, id]);
+  const car = useSelector(oneCarSelector);
+  const userReviews = car.reviews?.length || [];
 
+  //   console.log(userReviews);
+
+  const photos = car?.gallery || [];
   return (
     <div>
       <h3 className={css.name}>{car.name}</h3>
@@ -14,7 +25,7 @@ export default function CarInformation({ car }) {
           <use href={`${sprite}#icon-star`}></use>
         </svg>
         <p>{car.rating}</p>
-        <p>({car.reviews.length} Reviews)</p>
+        <p>({userReviews} Reviews)</p>
         <svg className={css.iconMap}>
           <use href={`${sprite}#icon-map`}></use>
         </svg>
@@ -22,7 +33,7 @@ export default function CarInformation({ car }) {
       </div>
       <p className={css.price}>€{car.price}</p>
       <ul className={css.fotoList}>
-        {photos.length > 0 &&
+        {photos &&
           photos.map((photo, index) => {
             return (
               <li key={index}>

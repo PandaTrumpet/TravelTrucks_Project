@@ -6,7 +6,7 @@ import Review from "../Review/Review.jsx";
 export default function Reviews() {
   const { id } = useParams();
   const car = useSelector(oneCarSelector);
-  const reviews = car.reviews;
+  const reviews = car?.reviews || [];
   console.log(reviews);
 
   return (
