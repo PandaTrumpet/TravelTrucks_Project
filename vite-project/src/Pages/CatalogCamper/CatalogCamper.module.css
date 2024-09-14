@@ -2,11 +2,16 @@
     padding-top: 48px;
     padding-left: 64px;
     padding-right: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .list {
     display: flex;
     gap: 40px;
+    margin-bottom: 64px;
+    margin-top: 60px;
 }
 
 .link {
@@ -30,7 +35,7 @@
     background-color: var(--button);
 
     border-radius: 2px;
-    transition: width 0.3s ease-in-out, right 0.3s ease-in-out;
+    /* transition: width 0.3s ease-in-out, right 0.3s ease-in-out; */
     /* Переход для ширины и позиции */
 }
 
@@ -41,12 +46,15 @@
 
 }
 
-/* .link.inactive::after {
-    width: 0%;
+.formContainer {
+    justify-items: right
+}
 
-} */
-
-/* .formContainer {
+.outletContainer {
     display: flex;
-    justify-content: right;
-} */
+    gap: 40px;
+}
+
+.outlet {
+    width: 631px;
+}

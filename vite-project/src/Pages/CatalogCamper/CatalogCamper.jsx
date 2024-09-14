@@ -14,8 +14,7 @@ export default function CatalogCamper() {
   useEffect(() => {
     dispatch(fetchCarId(id));
   }, [dispatch, id]);
-  // const car = useSelector(oneCarSelector);
-  // console.log(car);
+
   const activeClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
   };
@@ -36,10 +35,14 @@ export default function CatalogCamper() {
           </NavLink>
         </li>
       </ul>
-      <div className={css.formContainer}>
-        <BookingForm />
+      <div className={css.outletContainer}>
+        <div className={css.outlet}>
+          <Outlet />
+        </div>
+        <div className={css.formContainer}>
+          <BookingForm />
+        </div>
       </div>
-      <Outlet />
     </div>
   );
 }
