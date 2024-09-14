@@ -10,8 +10,8 @@ export default function Reviews() {
   console.log(reviews);
 
   return (
-    <div>
-      <ul>
+    <div className={css.container}>
+      <ul className={css.reviewsList}>
         {reviews.length > 0 &&
           reviews.map((review, index) => {
             return (

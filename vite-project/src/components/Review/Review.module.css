@@ -1,0 +1,25 @@
+.starIcon {
+    fill: var(--rating);
+    width: 16px;
+    height: 16px;
+}
+
+.nameContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.firstLetter {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--button);
+    background: var(--badges);
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
