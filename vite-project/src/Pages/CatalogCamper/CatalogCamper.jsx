@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
 import CarInformation from "../../components/CarInformation/CarInformation.jsx";
+import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 export default function CatalogCamper() {
   const { id } = useParams();
 
@@ -28,6 +29,9 @@ export default function CatalogCamper() {
           <NavLink to="reviews">Reviews </NavLink>
         </li>
       </ul>
+      <div>
+        <BookingForm />
+      </div>
       <Outlet />
     </div>
   );
