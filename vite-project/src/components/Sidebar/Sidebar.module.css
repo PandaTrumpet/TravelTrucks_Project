@@ -6,6 +6,10 @@
     cursor: pointer;
 }
 
+.sidebar {
+    width: 360px;
+}
+
 .checkboxContainer.active {
     border-color: red;
 }
