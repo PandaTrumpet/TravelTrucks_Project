@@ -1,8 +1,10 @@
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import css from "./CatalogCamper.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
+import CarInformation from "../../components/CarInformation/CarInformation.jsx";
 export default function CatalogCamper() {
   const { id } = useParams();
 
@@ -14,8 +16,10 @@ export default function CatalogCamper() {
   console.log(car);
 
   return (
-    <div>
-      Catalofg Camper -{id}
+    <div className={css.container}>
+      <div>
+        <CarInformation car={car} />
+      </div>
       <ul>
         <li>
           <NavLink to="features">Features</NavLink>
