@@ -7,6 +7,31 @@ export default function Sidebar() {
   const [isCheckedKitchen, setIsCheckedKitchen] = useState(false);
   const [isCheckedTV, setIsCheckedTV] = useState(false);
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
+  const [isCheckedVan, setIsCheckedVan] = useState(false);
+  const [isCheckedFull, setIsCheckedFull] = useState(false);
+  const [isCheckedAlcove, setIsCheckedAlcove] = useState(false);
+
+  const handleDivClickAlcove = () => {
+    setIsCheckedAlcove((prevChecked) => {
+      const newChecked = !prevChecked;
+      // console.log(newChecked ? "active" : "not active");
+      return newChecked;
+    });
+  };
+  const handleDivClickFull = () => {
+    setIsCheckedFull((prevChecked) => {
+      const newChecked = !prevChecked;
+      // console.log(newChecked ? "active" : "not active");
+      return newChecked;
+    });
+  };
+  const handleDivClickVan = () => {
+    setIsCheckedVan((prevChecked) => {
+      const newChecked = !prevChecked;
+      // console.log(newChecked ? "active" : "not active");
+      return newChecked;
+    });
+  };
   const handleDivClickBathroom = () => {
     setIsCheckedBathroom((prevChecked) => {
       const newChecked = !prevChecked;
@@ -50,12 +75,17 @@ export default function Sidebar() {
         <label htmlFor={locationId} className={css.locationText}>
           Location
         </label>
-        <input
-          type="text"
-          className={css.location}
-          id={locationId}
-          placeholder="City"
-        />
+        <div className={css.inputWrapper}>
+          <input
+            type="text"
+            className={css.location}
+            id={locationId}
+            placeholder="City"
+          />
+          <svg className={css.iconMap}>
+            <use href={`${sprite}#icon-map`}></use>
+          </svg>
+        </div>
       </div>
       <p className={css.filterText}>Filters</p>
       <h3 className={css.vehicleTitle}>Vehicle equipment</h3>
@@ -161,7 +191,72 @@ export default function Sidebar() {
           </div>
         </li>
       </ul>
-      <button type="submit">Search</button>
+      <h3 className={css.vechileText}>Vehicle type</h3>
+      <ul className={css.filterVechile}>
+        <li>
+          <div
+            className={`${css.checkboxContainer} ${
+              isCheckedVan ? css.active : ""
+            }`}
+            onClick={handleDivClickVan}
+          >
+            <input
+              type="checkbox"
+              checked={isCheckedVan}
+              onChange={handleDivClickVan}
+              className={css.hiddenCheckbox}
+              name="TV"
+            />
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-bi_grid-1x2`}></use>
+            </svg>
+            <span className={css.text}>Van</span>
+          </div>
+        </li>
+        <li>
+          <div
+            className={`${css.checkboxContainer} ${
+              isCheckedFull ? css.active : ""
+            }`}
+            onClick={handleDivClickFull}
+          >
+            <input
+              type="checkbox"
+              checked={isCheckedFull}
+              onChange={handleDivClickFull}
+              className={css.hiddenCheckbox}
+              name="TV"
+            />
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-bi_grid`}></use>
+            </svg>
+            <span className={css.text}>Fully Integrated</span>
+          </div>
+        </li>
+        <li>
+          <div
+            className={`${css.checkboxContainer} ${
+              isCheckedAlcove ? css.active : ""
+            }`}
+            onClick={handleDivClickAlcove}
+          >
+            <input
+              type="checkbox"
+              checked={isCheckedAlcove}
+              onChange={handleDivClickAlcove}
+              className={css.hiddenCheckbox}
+              name="TV"
+            />
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-bi_grid-3x3-gap`}></use>
+            </svg>
+            <span className={css.text}>Alcove</span>
+          </div>
+        </li>
+      </ul>
+      <button type="submit" className={css.btn}>
+        Search
+      </button>
     </form>
   );
 }

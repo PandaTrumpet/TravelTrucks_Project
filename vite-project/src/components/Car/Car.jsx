@@ -55,12 +55,14 @@ export default function Car({ car }) {
             <p></p>
           </li>
         </ul> */}
-        <Link to={`/catalog/${car.id}`}>Show more</Link>
+        <Link
+          to={`/catalog/${car.id}`}
+          target="blank"
+          rel="noopener noreferrer"
+        >
+          Show more
+        </Link>
       </div>
     </div>
   );
-}
-
-{
-  /* <img src={picture.gallery[0].thumb} alt="" className={css.picture} /> */
 }

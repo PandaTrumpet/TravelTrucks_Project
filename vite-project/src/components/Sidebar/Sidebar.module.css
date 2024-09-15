@@ -79,7 +79,7 @@
 
 .location {
     border-radius: 12px;
-    padding: 18px 218px 18px 20px;
+    padding: 18px 218px 18px 36px;
     width: 360px;
     height: 56px;
     background: var(--inputs);
@@ -90,6 +90,9 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--main);
+
+
+
 }
 
 .location::placeholder {
@@ -98,4 +101,72 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--gray);
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.iconMap {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    stroke: var(--gray);
+    transition: stroke 0.3s ease;
+}
+
+.location::placeholder .iconMap {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+
+
+
+}
+
+
+
+.location:focus~.iconMap {
+    stroke: var(--main);
+}
+
+.vechileText {
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+    margin-bottom: 48px;
+}
+
+.filterVechile {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    border-radius: 200px;
+    padding: 16px 60px;
+    width: 166px;
+    height: 56px;
+    background: var(--button);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    border: none;
+    outline: transparent;
+    transition: background 300ms ease-in-out;
+}
+
+.btn:hover {
+    background: var(--button-hover);
 }

@@ -13,12 +13,7 @@
 
 }
 
-/* backgroundPosition: 'center',
-// Центрирует изображение
-width: '100%',
-// Устанавливает ширину div
-height: '300px',
-// Устанавливает высоту div */
+
 
 .iconHeart {
     width: 24px;
@@ -82,7 +77,7 @@ height: '300px',
     margin-right: 4px;
 }
 
-.detalis {
+.details {
     display: flex;
     margin-top: 8px;
     align-items: center;
