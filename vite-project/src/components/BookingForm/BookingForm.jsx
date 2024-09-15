@@ -85,7 +85,6 @@ export default function BookingForm() {
               type="text"
               id={dateId}
               name="date"
-              initialValues={initialValues.date}
               placeholder="Booking date*"
               className={css.input}
             />

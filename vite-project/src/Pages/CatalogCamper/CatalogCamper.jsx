@@ -31,7 +31,7 @@ export default function CatalogCamper() {
         </li>
         <li>
           <NavLink to="reviews" className={activeClass}>
-            Reviews{" "}
+            Reviews
           </NavLink>
         </li>
       </ul>
