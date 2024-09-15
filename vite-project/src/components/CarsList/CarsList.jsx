@@ -5,6 +5,8 @@ import { carsSelector } from "../../redux/cars/selectors.js";
 export default function CarsList() {
   const cars = useSelector(carsSelector);
   console.log(cars);
+  const findAC = cars.filter((car) => car.TV === true);
+  // console.log(findAC);
 
   return (
     <div>

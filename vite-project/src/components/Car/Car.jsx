@@ -3,7 +3,7 @@ import sprite from "../../images/sprite.svg";
 import { Link } from "react-router-dom";
 
 export default function Car({ car }) {
-  // console.log(car.id);
+  // console.log(car.AC);
 
   const picture = car;
 

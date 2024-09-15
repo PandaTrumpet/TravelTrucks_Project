@@ -10,7 +10,15 @@ export default function Sidebar() {
   const [isCheckedVan, setIsCheckedVan] = useState(false);
   const [isCheckedFull, setIsCheckedFull] = useState(false);
   const [isCheckedAlcove, setIsCheckedAlcove] = useState(false);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const selectedValues = Array.from(formData.entries())
+      .filter(([key, value]) => key === "vehicleType" && value)
+      .map(([key, value]) => value);
 
+    console.log("Selected checkboxes values:", selectedValues);
+  };
   const handleDivClickAlcove = () => {
     setIsCheckedAlcove((prevChecked) => {
       const newChecked = !prevChecked;
@@ -70,7 +78,7 @@ export default function Sidebar() {
 
   const locationId = useId();
   return (
-    <form className={css.sidebar}>
+    <form className={css.sidebar} onSubmit={onSubmit}>
       <div className={css.locationCont}>
         <label htmlFor={locationId} className={css.locationText}>
           Location
@@ -81,6 +89,7 @@ export default function Sidebar() {
             className={css.location}
             id={locationId}
             placeholder="City"
+            name="vehicleType"
           />
           <svg className={css.iconMap}>
             <use href={`${sprite}#icon-map`}></use>
@@ -102,7 +111,8 @@ export default function Sidebar() {
               checked={isCheckedAC}
               onChange={handleDivClick}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="AC"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-wind`}></use>
@@ -122,7 +132,8 @@ export default function Sidebar() {
               checked={isCheckedAutomatic}
               onChange={handleDivClickAutomatic}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="automatic"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-diagram`}></use>
@@ -142,7 +153,8 @@ export default function Sidebar() {
               checked={isCheckedKitchen}
               onChange={handleDivClickKitchen}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="kitchen"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-cup-hot`}></use>
@@ -162,7 +174,8 @@ export default function Sidebar() {
               checked={isCheckedTV}
               onChange={handleDivClickTV}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="TV"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-tv`}></use>
@@ -182,7 +195,8 @@ export default function Sidebar() {
               checked={isCheckedBathroom}
               onChange={handleDivClickBathroom}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="bathroom"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_droplet`}></use>
@@ -205,7 +219,8 @@ export default function Sidebar() {
               checked={isCheckedVan}
               onChange={handleDivClickVan}
               className={css.hiddenCheckbox}
-              name="TV"
+              value="panelTruck"
+              name="vehicleType"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_grid-1x2`}></use>
@@ -225,7 +240,8 @@ export default function Sidebar() {
               checked={isCheckedFull}
               onChange={handleDivClickFull}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="fullyIntegrated"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_grid`}></use>
@@ -245,7 +261,8 @@ export default function Sidebar() {
               checked={isCheckedAlcove}
               onChange={handleDivClickAlcove}
               className={css.hiddenCheckbox}
-              name="TV"
+              name="vehicleType"
+              value="alcove"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_grid-3x3-gap`}></use>
