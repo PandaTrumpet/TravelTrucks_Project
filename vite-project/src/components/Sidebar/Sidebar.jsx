@@ -12,10 +12,10 @@ export default function Sidebar() {
   const [isCheckedTV, setIsCheckedTV] = useState(false);
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
-
+  const [city, setCity] = useState("");
   const dispatch = useDispatch();
   const selectorFilter = useSelector(filterSelector);
-  console.log(selectorFilter);
+  // console.log(selectorFilter);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +28,7 @@ export default function Sidebar() {
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
       form: selectedVehicleType, // Single selected vehicle type
+      city: city,
     };
 
     // Dispatch filter action with selected filters
@@ -76,6 +77,9 @@ export default function Sidebar() {
             className={css.location}
             id={locationId}
             placeholder="City"
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
             name="location" // Change name to "location" to avoid confusion with vehicleType
           />
           <svg className={css.iconMap}>
