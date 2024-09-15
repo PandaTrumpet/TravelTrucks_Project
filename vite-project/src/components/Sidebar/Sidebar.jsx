@@ -17,15 +17,35 @@ export default function Sidebar() {
   const selectorFilter = useSelector(filterSelector);
   console.log(selectorFilter);
 
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.target);
+  //   const selectedValues = Array.from(formData.entries())
+  //     .filter(([key, value]) => key === "vehicleType" && value)
+  //     .map(([key, value]) => value);
+  //   dispatch(filterCars(selectedValues));
+  //   console.log("Selected checkboxes values:", selectedValues);
+  // };
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const selectedValues = Array.from(formData.entries())
-      .filter(([key, value]) => key === "vehicleType" && value)
-      .map(([key, value]) => value);
-    dispatch(filterCars(selectedValues));
-    console.log("Selected checkboxes values:", selectedValues);
+
+    // Извлекаем данные из формы
+    const selectedFilters = {
+      AC: formData.get("AC") ? true : false,
+      automatic: formData.get("automatic") ? true : false,
+      kitchen: formData.get("kitchen") ? true : false,
+      TV: formData.get("TV") ? true : false,
+      bathroom: formData.get("bathroom") ? true : false,
+      // vehicleType: formData.getAll("vehicleType"), // если нужно несколько типов транспортных средств
+    };
+
+    // Отправляем данные в Redux
+    dispatch(filterCars(selectedFilters));
+
+    console.log("Selected filters:", selectedFilters);
   };
+
   const handleDivClickAlcove = () => {
     setIsCheckedAlcove((prevChecked) => {
       const newChecked = !prevChecked;
@@ -213,7 +233,7 @@ export default function Sidebar() {
         </li>
       </ul>
       <h3 className={css.vechileText}>Vehicle type</h3>
-      <ul className={css.filterVechile}>
+      {/* <ul className={css.filterVechile}>
         <li>
           <div
             className={`${css.checkboxContainer} ${
@@ -277,7 +297,7 @@ export default function Sidebar() {
             <span className={css.text}>Alcove</span>
           </div>
         </li>
-      </ul>
+      </ul> */}
       <button type="submit" className={css.btn}>
         Search
       </button>
