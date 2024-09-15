@@ -4,106 +4,66 @@ import { useDispatch, useSelector } from "react-redux";
 import { useId, useState } from "react";
 import { filterSelector } from "../../redux/filter/selectors.js";
 import { filterCars } from "../../redux/filter/slice.js";
+
 export default function Sidebar() {
   const [isCheckedAC, setIsCheckedAC] = useState(false);
   const [isCheckedAutomatic, setIsCheckedAutomatic] = useState(false);
   const [isCheckedKitchen, setIsCheckedKitchen] = useState(false);
   const [isCheckedTV, setIsCheckedTV] = useState(false);
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
-  const [isCheckedVan, setIsCheckedVan] = useState(false);
-  const [isCheckedFull, setIsCheckedFull] = useState(false);
-  const [isCheckedAlcove, setIsCheckedAlcove] = useState(false);
+  const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
+
   const dispatch = useDispatch();
   const selectorFilter = useSelector(filterSelector);
   console.log(selectorFilter);
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const selectedValues = Array.from(formData.entries())
-  //     .filter(([key, value]) => key === "vehicleType" && value)
-  //     .map(([key, value]) => value);
-  //   dispatch(filterCars(selectedValues));
-  //   console.log("Selected checkboxes values:", selectedValues);
-  // };
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
-    // Извлекаем данные из формы
     const selectedFilters = {
-      AC: formData.get("AC") ? true : false,
-      automatic: formData.get("automatic") ? true : false,
-      kitchen: formData.get("kitchen") ? true : false,
-      TV: formData.get("TV") ? true : false,
-      bathroom: formData.get("bathroom") ? true : false,
-      // vehicleType: formData.getAll("vehicleType"), // если нужно несколько типов транспортных средств
+      AC: isCheckedAC,
+      automatic: isCheckedAutomatic,
+      kitchen: isCheckedKitchen,
+      TV: isCheckedTV,
+      bathroom: isCheckedBathroom,
+      form: selectedVehicleType, // Single selected vehicle type
     };
 
-    // Отправляем данные в Redux
+    // Dispatch filter action with selected filters
     dispatch(filterCars(selectedFilters));
 
     console.log("Selected filters:", selectedFilters);
   };
 
-  const handleDivClickAlcove = () => {
-    setIsCheckedAlcove((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
+  const handleDivClick = (filterName) => {
+    switch (filterName) {
+      case "AC":
+        setIsCheckedAC((prev) => !prev);
+        break;
+      case "automatic":
+        setIsCheckedAutomatic((prev) => !prev);
+        break;
+      case "kitchen":
+        setIsCheckedKitchen((prev) => !prev);
+        break;
+      case "TV":
+        setIsCheckedTV((prev) => !prev);
+        break;
+      case "bathroom":
+        setIsCheckedBathroom((prev) => !prev);
+        break;
+      default:
+        break;
+    }
   };
-  const handleDivClickFull = () => {
-    setIsCheckedFull((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
-  };
-  const handleDivClickVan = () => {
-    setIsCheckedVan((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
-  };
-  const handleDivClickBathroom = () => {
-    setIsCheckedBathroom((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
-  };
-  const handleDivClickTV = () => {
-    setIsCheckedTV((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
-  };
-  const handleDivClick = () => {
-    setIsCheckedAC((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
-  };
-  const handleDivClickAutomatic = () => {
-    setIsCheckedAutomatic((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
-  };
-  const handleDivClickKitchen = () => {
-    setIsCheckedKitchen((prevChecked) => {
-      const newChecked = !prevChecked;
-      // console.log(newChecked ? "active" : "not active");
-      return newChecked;
-    });
+
+  const handleDivClickType = (vehicleType) => {
+    setSelectedVehicleType(vehicleType); // Set the selected vehicle type
   };
 
   const locationId = useId();
+
   return (
     <form className={css.sidebar} onSubmit={onSubmit}>
       <div className={css.locationCont}>
@@ -116,7 +76,7 @@ export default function Sidebar() {
             className={css.location}
             id={locationId}
             placeholder="City"
-            name="vehicleType"
+            name="location" // Change name to "location" to avoid confusion with vehicleType
           />
           <svg className={css.iconMap}>
             <use href={`${sprite}#icon-map`}></use>
@@ -131,14 +91,14 @@ export default function Sidebar() {
             className={`${css.checkboxContainer} ${
               isCheckedAC ? css.active : ""
             }`}
-            onClick={handleDivClick}
+            onClick={() => handleDivClick("AC")}
           >
             <input
               type="checkbox"
               checked={isCheckedAC}
-              onChange={handleDivClick}
+              onChange={() => handleDivClick("AC")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
+              name="AC"
               value="AC"
             />
             <svg className={css.icon}>
@@ -152,14 +112,14 @@ export default function Sidebar() {
             className={`${css.checkboxContainer} ${
               isCheckedAutomatic ? css.active : ""
             }`}
-            onClick={handleDivClickAutomatic}
+            onClick={() => handleDivClick("automatic")}
           >
             <input
               type="checkbox"
               checked={isCheckedAutomatic}
-              onChange={handleDivClickAutomatic}
+              onChange={() => handleDivClick("automatic")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
+              name="automatic"
               value="automatic"
             />
             <svg className={css.icon}>
@@ -173,14 +133,14 @@ export default function Sidebar() {
             className={`${css.checkboxContainer} ${
               isCheckedKitchen ? css.active : ""
             }`}
-            onClick={handleDivClickKitchen}
+            onClick={() => handleDivClick("kitchen")}
           >
             <input
               type="checkbox"
               checked={isCheckedKitchen}
-              onChange={handleDivClickKitchen}
+              onChange={() => handleDivClick("kitchen")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
+              name="kitchen"
               value="kitchen"
             />
             <svg className={css.icon}>
@@ -194,14 +154,14 @@ export default function Sidebar() {
             className={`${css.checkboxContainer} ${
               isCheckedTV ? css.active : ""
             }`}
-            onClick={handleDivClickTV}
+            onClick={() => handleDivClick("TV")}
           >
             <input
               type="checkbox"
               checked={isCheckedTV}
-              onChange={handleDivClickTV}
+              onChange={() => handleDivClick("TV")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
+              name="TV"
               value="TV"
             />
             <svg className={css.icon}>
@@ -215,14 +175,14 @@ export default function Sidebar() {
             className={`${css.checkboxContainer} ${
               isCheckedBathroom ? css.active : ""
             }`}
-            onClick={handleDivClickBathroom}
+            onClick={() => handleDivClick("bathroom")}
           >
             <input
               type="checkbox"
               checked={isCheckedBathroom}
-              onChange={handleDivClickBathroom}
+              onChange={() => handleDivClick("bathroom")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
+              name="bathroom"
               value="bathroom"
             />
             <svg className={css.icon}>
@@ -233,21 +193,21 @@ export default function Sidebar() {
         </li>
       </ul>
       <h3 className={css.vechileText}>Vehicle type</h3>
-      {/* <ul className={css.filterVechile}>
+      <ul className={css.filterVechile}>
         <li>
           <div
             className={`${css.checkboxContainer} ${
-              isCheckedVan ? css.active : ""
+              selectedVehicleType === "panelTruck" ? css.active : ""
             }`}
-            onClick={handleDivClickVan}
+            onClick={() => handleDivClickType("panelTruck")}
           >
             <input
               type="checkbox"
-              checked={isCheckedVan}
-              onChange={handleDivClickVan}
+              checked={selectedVehicleType === "panelTruck"}
+              onChange={() => handleDivClickType("panelTruck")}
               className={css.hiddenCheckbox}
               value="panelTruck"
-              name="vehicleType"
+              name="form"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_grid-1x2`}></use>
@@ -258,17 +218,17 @@ export default function Sidebar() {
         <li>
           <div
             className={`${css.checkboxContainer} ${
-              isCheckedFull ? css.active : ""
+              selectedVehicleType === "fullyIntegrated" ? css.active : ""
             }`}
-            onClick={handleDivClickFull}
+            onClick={() => handleDivClickType("fullyIntegrated")}
           >
             <input
               type="checkbox"
-              checked={isCheckedFull}
-              onChange={handleDivClickFull}
+              checked={selectedVehicleType === "fullyIntegrated"}
+              onChange={() => handleDivClickType("fullyIntegrated")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
               value="fullyIntegrated"
+              name="form"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_grid`}></use>
@@ -279,17 +239,17 @@ export default function Sidebar() {
         <li>
           <div
             className={`${css.checkboxContainer} ${
-              isCheckedAlcove ? css.active : ""
+              selectedVehicleType === "alcove" ? css.active : ""
             }`}
-            onClick={handleDivClickAlcove}
+            onClick={() => handleDivClickType("alcove")}
           >
             <input
               type="checkbox"
-              checked={isCheckedAlcove}
-              onChange={handleDivClickAlcove}
+              checked={selectedVehicleType === "alcove"}
+              onChange={() => handleDivClickType("alcove")}
               className={css.hiddenCheckbox}
-              name="vehicleType"
               value="alcove"
+              name="form"
             />
             <svg className={css.icon}>
               <use href={`${sprite}#icon-bi_grid-3x3-gap`}></use>
@@ -297,7 +257,7 @@ export default function Sidebar() {
             <span className={css.text}>Alcove</span>
           </div>
         </li>
-      </ul> */}
+      </ul>
       <button type="submit" className={css.btn}>
         Search
       </button>
