@@ -51,19 +51,43 @@ const carsSlice = createSlice({
 //   }
 // );
 
+// export const filteredCars = createSelector(
+//   [(state) => state.cars.items, (state) => state.filter.filterItem],
+//   (cars, filter) => {
+//     return cars.filter((car) => {
+//       // console.log(car);
+
+//       return Object.keys(filter).every((key) => {
+//         // console.log(filter);
+
+//         // Применяем фильтр только если он задан (не undefined и не null)
+//         if (filter[key] === false || filter[key] === null) {
+//           // console.log(filter);
+
+//           return true; // Пропускаем этот критерий фильтрации
+//         }
+//         return car[key] === filter[key]; // Сравниваем с фильтром
+//       });
+//     });
+//   }
+// );
 export const filteredCars = createSelector(
   [(state) => state.cars.items, (state) => state.filter.filterItem],
   (cars, filter) => {
+    // Проверяем, если все фильтры либо пусты, либо false, либо null
+    const noFiltersApplied = Object.keys(filter).every(
+      (key) => filter[key] === false || filter[key] === null
+    );
+
+    // Если нет активных фильтров, возвращаем все автомобили
+    if (noFiltersApplied) {
+      return cars;
+    }
+
+    // Если есть фильтры, применяем фильтрацию
     return cars.filter((car) => {
-      // console.log(car);
-
       return Object.keys(filter).every((key) => {
-        // console.log(filter);
-
-        // Применяем фильтр только если он задан (не undefined и не null)
         if (filter[key] === false || filter[key] === null) {
-          // console.log(filter);
-
           return true; // Пропускаем этот критерий фильтрации
         }
         return car[key] === filter[key]; // Сравниваем с фильтром

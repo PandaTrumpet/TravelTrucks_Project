@@ -25,7 +25,7 @@ export default function Sidebar() {
 
     const selectedFilters = {
       AC: isCheckedAC,
-      transmission: isCheckedAutomatic ? "automatic" : "manual",
+      transmission: isCheckedAutomatic,
       kitchen: isCheckedKitchen,
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
