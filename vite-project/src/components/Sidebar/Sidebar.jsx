@@ -18,59 +18,52 @@ export default function Sidebar() {
   const dispatch = useDispatch();
   const cars = useSelector(carsSelector); // Получаем автомобили
   const filters = useSelector(filterSelector); // Получаем фильтры
-  // console.log(filters);
+  // console.log(isCheckedAutomatic);
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
     const selectedFilters = {
       AC: isCheckedAC,
-      automatic: isCheckedAutomatic,
+      transmission: isCheckedAutomatic ? "automatic" : "manual",
       kitchen: isCheckedKitchen,
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
       form: selectedVehicleType, // Single selected vehicle type
-      location: city,
+      // location: city,
     };
 
     dispatch(filterCars(selectedFilters));
 
     // console.log("Selected filters:", selectedFilters);
   };
-  const filteredCars = cars.filter((car) => {
-    const matchAC = filters.AC ? car.AC === filters.AC : true;
-    const matchAutomatic = filters.automatic
-      ? car.automatic === filters.automatic
-      : true;
-    const matchKitchen = filters.kitchen
-      ? car.kitchen === filters.kitchen
-      : true;
-    const matchTV = filters.TV ? car.TV === filters.TV : true;
-    const matchBathroom = filters.bathroom
-      ? car.bathroom === filters.bathroom
-      : true;
-    const matchVehicleType =
-      filters.vehicleType && filters.vehicleType.length > 0
-        ? filters.vehicleType.includes(car.vehicleType)
-        : true;
 
-    return (
-      matchAC &&
-      matchAutomatic &&
-      matchKitchen &&
-      matchTV &&
-      matchBathroom &&
-      matchVehicleType
-    );
-  });
-  // console.log(filteredCars);
+  // const apartments = [
+  //   { id: 1, TV: true, AC: true, area: 50 },
+  //   { id: 2, TV: false, AC: true, area: 30 },
+  //   { id: 3, TV: true, AC: true, area: 45 },
+  //   { id: 4, TV: false, AC: false, area: 70 },
+  // ];
+  // const filterCriteria = {
+  //   TV: true,
+  //   AC: true,
+  // };
+  // const filterApartments = (array, criteria) => {
+  //   return array.filter((apartment) => {
+  //     return Object.keys(criteria).every((key) => {
+  //       return apartment[key] === criteria[key];
+  //     });
+  //   });
+  // };
+  // const filteredApartments = filterApartments(apartments, filterCriteria);
 
+  // console.log(filteredApartments);
   const handleDivClick = (filterName) => {
     switch (filterName) {
       case "AC":
         setIsCheckedAC((prev) => !prev);
         break;
-      case "automatic":
+      case "transmission":
         setIsCheckedAutomatic((prev) => !prev);
         break;
       case "kitchen":
@@ -144,14 +137,14 @@ export default function Sidebar() {
             className={`${css.checkboxContainer} ${
               isCheckedAutomatic ? css.active : ""
             }`}
-            onClick={() => handleDivClick("automatic")}
+            onClick={() => handleDivClick("transmission")}
           >
             <input
               type="checkbox"
               checked={isCheckedAutomatic}
-              onChange={() => handleDivClick("automatic")}
+              onChange={() => handleDivClick("transmission")}
               className={css.hiddenCheckbox}
-              name="automatic"
+              name="transmission"
               value="automatic"
             />
             <svg className={css.icon}>

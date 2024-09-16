@@ -28,36 +28,48 @@ const carsSlice = createSlice({
 //     return cars.filter((car) => (car.TV === filter.TV ? car : null));
 //   }
 // );
-export const filteredCars = createSelector(
-  [(state) => state.cars.items, (state) => state.filter.filterItem],
-  (cars, filter) => {
-    return cars.filter((car) => {
-      if (filter.TV === undefined || filter.TV === null) {
-        return true; // Возвращаем все автомобили
-      }
-
-      return car.TV === filter.TV;
-    });
-  }
-);
-
 // export const filteredCars = createSelector(
 //   [(state) => state.cars.items, (state) => state.filter.filterItem],
 //   (cars, filter) => {
 //     return cars.filter((car) => {
-//       // Проверяем фильтры TV и AC
-//       const matchTV =
-//         filter.TV === undefined || filter.TV === null
-//           ? true
-//           : car.TV === filter.TV;
-//       const matchAC =
-//         filter.AC === undefined || filter.AC === null
-//           ? true
-//           : car.AC === filter.AC;
+//       if (filter.TV === undefined || filter.TV === null) {
+//         return true; // Возвращаем все автомобили
+//       }
 
-//       return matchTV && matchAC;
+//       return car.TV === filter.TV;
 //     });
 //   }
 // );
+// export const filteredCars = createSelector(
+//   [(state) => state.cars.items, (state) => state.filter.filterItem],
+//   (cars, filter) => {
+//     return cars.filter((car) => {
+//       return Object.keys(filter).every((key) => {
+//         return car[key] === filter[key];
+//       });
+//     });
+//   }
+// );
+
+export const filteredCars = createSelector(
+  [(state) => state.cars.items, (state) => state.filter.filterItem],
+  (cars, filter) => {
+    return cars.filter((car) => {
+      // console.log(car);
+
+      return Object.keys(filter).every((key) => {
+        // console.log(filter);
+
+        // Применяем фильтр только если он задан (не undefined и не null)
+        if (filter[key] === false || filter[key] === null) {
+          // console.log(filter);
+
+          return true; // Пропускаем этот критерий фильтрации
+        }
+        return car[key] === filter[key]; // Сравниваем с фильтром
+      });
+    });
+  }
+);
 
 export default carsSlice.reducer;

@@ -6,7 +6,7 @@ import { filteredCars } from "../../Redux/cars/slice.js";
 export default function CarsList() {
   // const cars = useSelector(carsSelector);
   const cars = useSelector(filteredCars);
-  // console.log(cars);
+  console.log(cars);
 
   const findAC = cars.filter(
     (car) =>
