@@ -17,7 +17,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const filterSlice = createSlice({
   name: "filter",
   initialState: {
-    items: {},
+    filterItem: {},
   },
   reducers: {
     // filterCars(state, action) {
@@ -52,7 +52,9 @@ const filterSlice = createSlice({
     //   });
     // },
     filterCars(state, action) {
-      state.items = action.payload;
+      const folter = action.payload;
+
+      state.filterItem = action.payload;
     },
   },
 });

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useId, useState } from "react";
 import { filterSelector } from "../../redux/filter/selectors.js";
 import { filterCars } from "../../redux/filter/slice.js";
+import { carsSelector } from "../../redux/cars/selectors.js";
 
 export default function Sidebar() {
   const [isCheckedAC, setIsCheckedAC] = useState(false);
@@ -13,10 +14,11 @@ export default function Sidebar() {
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
   const [city, setCity] = useState("");
-  const dispatch = useDispatch();
-  const selectorFilter = useSelector(filterSelector);
-  // console.log(selectorFilter);
 
+  const dispatch = useDispatch();
+  const cars = useSelector(carsSelector); // Получаем автомобили
+  const filters = useSelector(filterSelector); // Получаем фильтры
+  // console.log(filters);
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -28,14 +30,40 @@ export default function Sidebar() {
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
       form: selectedVehicleType, // Single selected vehicle type
-      city: city,
+      location: city,
     };
 
-    // Dispatch filter action with selected filters
     dispatch(filterCars(selectedFilters));
 
-    console.log("Selected filters:", selectedFilters);
+    // console.log("Selected filters:", selectedFilters);
   };
+  const filteredCars = cars.filter((car) => {
+    const matchAC = filters.AC ? car.AC === filters.AC : true;
+    const matchAutomatic = filters.automatic
+      ? car.automatic === filters.automatic
+      : true;
+    const matchKitchen = filters.kitchen
+      ? car.kitchen === filters.kitchen
+      : true;
+    const matchTV = filters.TV ? car.TV === filters.TV : true;
+    const matchBathroom = filters.bathroom
+      ? car.bathroom === filters.bathroom
+      : true;
+    const matchVehicleType =
+      filters.vehicleType && filters.vehicleType.length > 0
+        ? filters.vehicleType.includes(car.vehicleType)
+        : true;
+
+    return (
+      matchAC &&
+      matchAutomatic &&
+      matchKitchen &&
+      matchTV &&
+      matchBathroom &&
+      matchVehicleType
+    );
+  });
+  // console.log(filteredCars);
 
   const handleDivClick = (filterName) => {
     switch (filterName) {
