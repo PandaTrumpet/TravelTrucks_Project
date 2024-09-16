@@ -3,7 +3,7 @@ import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useId, useState } from "react";
 import { filterSelector } from "../../redux/filter/selectors.js";
-import { filterCars } from "../../redux/filter/slice.js";
+import { filterCars, filterCity } from "../../redux/filter/slice.js";
 import { carsSelector } from "../../redux/cars/selectors.js";
 
 export default function Sidebar() {
@@ -14,6 +14,7 @@ export default function Sidebar() {
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
   const [city, setCity] = useState("");
+  // console.log(city);
 
   const dispatch = useDispatch();
   const cars = useSelector(carsSelector); // Получаем автомобили
@@ -34,6 +35,7 @@ export default function Sidebar() {
     };
 
     dispatch(filterCars(selectedFilters));
+    dispatch(filterCity(e.target.location.value));
 
     // console.log("Selected filters:", selectedFilters);
   };
