@@ -21,11 +21,11 @@ export default function Sidebar() {
   // console.log(isCheckedAutomatic);
   const onSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    // const formData = new FormData(e.target);
 
     const selectedFilters = {
       AC: isCheckedAC,
-      transmission: isCheckedAutomatic,
+      transmission: isCheckedAutomatic && "automatic",
       kitchen: isCheckedKitchen,
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
