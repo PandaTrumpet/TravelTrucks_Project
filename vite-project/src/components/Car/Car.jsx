@@ -137,10 +137,9 @@ export default function Car({ car }) {
         </ul>
         <Link
           to={`/catalog/${car.id}`}
-          // target="blank"
-          // rel="noopener noreferrer"
+          target="blank"
+          rel="noopener noreferrer"
           className={css.btn}
-          state={location}
         >
           Show more
         </Link>
