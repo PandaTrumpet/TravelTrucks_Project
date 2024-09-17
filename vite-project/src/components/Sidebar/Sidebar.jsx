@@ -38,8 +38,13 @@ export default function Sidebar() {
 
     dispatch(filterCars(selectedFilters));
     dispatch(filterCity(e.target.location.value));
-    e.resetForm();
-    // console.log("Selected filters:", selectedFilters);
+    e.target.reset();
+
+    // setIsCheckedAC(false);
+    // setIsCheckedAutomatic(false);
+    // setIsCheckedKitchen(false);
+    // setIsCheckedTV(false);
+    // setIsCheckedBathroom(false);
   };
 
   const locationName = useSelector(locationSelector);
