@@ -9,13 +9,13 @@ export default function CarsList() {
   const cars = useSelector(fullfiltered);
   console.log(cars);
 
-  const findAC = cars.filter(
-    (car) =>
-      car.AC === true &&
-      car.TV === true &&
-      car.bathroom === true &&
-      car.location.includes("Kha")
-  );
+  // const findAC = cars.filter(
+  //   (car) =>
+  //     car.AC === true &&
+  //     car.TV === true &&
+  //     car.bathroom === true &&
+  //     car.location.includes("Kha")
+  // );
   // console.log(findAC);
 
   return (

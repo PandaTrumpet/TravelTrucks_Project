@@ -1,11 +1,24 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import Layout from "../Layout/Layout.jsx";
-import HomePage from "../../Pages/Home.jsx";
-import CatalogPage from "../../Pages/CatalogPage/CatalogPage.jsx";
-import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage.jsx";
-import CatalogCamper from "../../Pages/CatalogCamper/CatalogCamper.jsx";
-import Features from "../Features/Features.jsx";
-import Reviews from "../Reviews/Reviews.jsx";
+
+const HomePage = lazy(() => import("../../Pages/Home.jsx"));
+
+const CatalogPage = lazy(() =>
+  import("../../Pages/CatalogPage/CatalogPage.jsx")
+);
+
+const NotFoundPage = lazy(() =>
+  import("../../Pages/NotFoundPage/NotFoundPage.jsx")
+);
+
+const CatalogCamper = lazy(() =>
+  import("../../Pages/CatalogCamper/CatalogCamper.jsx")
+);
+
+const Features = lazy(() => import("../Features/Features.jsx"));
+// import Reviews from "../Reviews/Reviews.jsx";
+const Reviews = lazy(() => import("../Reviews/Reviews.jsx"));
 export default function App() {
   return (
     <>

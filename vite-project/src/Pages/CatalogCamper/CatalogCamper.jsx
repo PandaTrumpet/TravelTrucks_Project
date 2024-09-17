@@ -7,8 +7,11 @@ import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
 import CarInformation from "../../components/CarInformation/CarInformation.jsx";
 import BookingForm from "../../components/BookingForm/BookingForm.jsx";
+import { Suspense } from "react";
 export default function CatalogCamper() {
   const { id } = useParams();
+  // const location = useLocation();
+  // console.log(location);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,7 +40,9 @@ export default function CatalogCamper() {
       </ul>
       <div className={css.outletContainer}>
         <div className={css.outlet}>
-          <Outlet />
+          <Suspense fallback={<div>Please wait...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
         <div className={css.formContainer}>
           <BookingForm />

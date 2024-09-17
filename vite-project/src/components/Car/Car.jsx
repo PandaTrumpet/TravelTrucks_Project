@@ -1,6 +1,6 @@
 import css from "./Car.module.css";
 import sprite from "../../images/sprite.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
@@ -30,6 +30,7 @@ export default function Car({ car }) {
       addToFavourite();
     }
   };
+
   return (
     <div className={css.container}>
       <div
@@ -136,9 +137,10 @@ export default function Car({ car }) {
         </ul>
         <Link
           to={`/catalog/${car.id}`}
-          target="blank"
-          rel="noopener noreferrer"
+          // target="blank"
+          // rel="noopener noreferrer"
           className={css.btn}
+          state={location}
         >
           Show more
         </Link>

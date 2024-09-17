@@ -1,6 +1,7 @@
 import css from "./Sidebar.module.css";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { useId, useState } from "react";
 import {
   filterSelector,
@@ -10,6 +11,11 @@ import { filterCars, filterCity } from "../../redux/filter/slice.js";
 import { carsSelector } from "../../redux/cars/selectors.js";
 
 export default function Sidebar() {
+  // const [search, setSearch] = useSearchParams();
+  // const newSearch = search.set("owner", "new");
+  // const A = setSearch(newSearch);
+  // console.log(A);
+
   const [isCheckedAC, setIsCheckedAC] = useState(false);
   const [isCheckedAutomatic, setIsCheckedAutomatic] = useState(false);
   const [isCheckedKitchen, setIsCheckedKitchen] = useState(false);
