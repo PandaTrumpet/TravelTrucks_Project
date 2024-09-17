@@ -1,7 +1,7 @@
 import css from "./Car.module.css";
 import sprite from "../../images/sprite.svg";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
 import {
@@ -9,13 +9,12 @@ import {
   deleteFavouriteCar,
 } from "../../Redux/cars/slice.js";
 export default function Car({ car }) {
-  // console.log(car.AC);
-
+  const [isFavourite, setIsFavourite] = useState(false);
   const picture = car;
   const favouriteSelect = useSelector(favouriteCarsSelector);
   console.log(favouriteSelect);
   const dispatch = useDispatch();
-  const handleAddToFavourite = () => {
+  const addToFavourite = () => {
     dispatch(addToFavouriteCar(car));
   };
   const deleteCarFromFavourite = () => {
@@ -23,16 +22,12 @@ export default function Car({ car }) {
   };
   const iconRef = useRef();
 
-  const changeColor = () => {
-    const currentColor = iconRef.current.style.fill;
-    iconRef.current.style.fill = currentColor === "red" ? "black" : "red";
-  };
-  const favouriteCars = () => {
-    const currentColor = iconRef.current.style.fill;
-    if (currentColor === "red") {
-      return handleAddToFavourite();
-    } else if (currentColor === "black") {
-      return deleteCarFromFavourite();
+  const toggleFavourite = () => {
+    setIsFavourite(!isFavourite);
+    if (isFavourite) {
+      deleteCarFromFavourite();
+    } else {
+      addToFavourite();
     }
   };
   return (
@@ -48,12 +43,11 @@ export default function Car({ car }) {
             <div className={css.priceContainer}>
               <p className={css.price}>€{car.price}</p>
               <svg
-                className={css.iconHeart}
+                className={`${css.iconHeart} ${
+                  isFavourite ? css.favourite : ""
+                }`}
                 ref={iconRef}
-                onClick={() => {
-                  changeColor();
-                  favouriteCars();
-                }}
+                onClick={toggleFavourite}
               >
                 <use href={`${sprite}#icon-heart`}></use>
               </svg>

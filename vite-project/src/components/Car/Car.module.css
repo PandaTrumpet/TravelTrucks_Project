@@ -20,11 +20,16 @@
     height: 21px;
 
     transition: fill 200ms ease-in-out;
+    cursor: pointer;
 }
 
-/* .iconHeart:hover {
+.iconHeart.favourite {
     fill: var(--button);
-} */
+}
+
+.iconHeart:hover {
+    fill: var(--button);
+}
 
 .titleContainer {
     display: flex;
