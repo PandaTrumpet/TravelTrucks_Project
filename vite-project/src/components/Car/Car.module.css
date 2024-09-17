@@ -18,12 +18,13 @@
 .iconHeart {
     width: 24px;
     height: 21px;
+
     transition: fill 200ms ease-in-out;
 }
 
-.iconHeart:hover {
+/* .iconHeart:hover {
     fill: var(--button);
-}
+} */
 
 .titleContainer {
     display: flex;

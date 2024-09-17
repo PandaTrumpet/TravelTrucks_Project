@@ -1,6 +1,7 @@
 import css from "./Car.module.css";
 import sprite from "../../images/sprite.svg";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
 import { addToFavouriteCar } from "../../Redux/cars/slice.js";
@@ -14,6 +15,16 @@ export default function Car({ car }) {
   const handleAddToFavourite = () => {
     dispatch(addToFavouriteCar(car));
   };
+
+  const iconRef = useRef();
+
+  const changeColor = () => {
+    if (iconRef.current.style.fill === "red") {
+      iconRef.current.style.fill = "black";
+    } else if (iconRef.current.style.fill === "black") {
+      iconRef.current.style.fill = "red";
+    }
+  };
   return (
     <div className={css.container}>
       <div
@@ -26,7 +37,11 @@ export default function Car({ car }) {
           <div className={css.mainInfo}>
             <div className={css.priceContainer}>
               <p className={css.price}>€{car.price}</p>
-              <svg className={css.iconHeart} onClick={handleAddToFavourite}>
+              <svg
+                className={css.iconHeart}
+                ref={iconRef}
+                onClick={changeColor}
+              >
                 <use href={`${sprite}#icon-heart`}></use>
               </svg>
             </div>
