@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { filteredCars } from "../cars/slice.js";
-console.log(filteredCars);
+// import { filteredCars } from "../cars/slice.js";
 
 const filterSlice = createSlice({
   name: "filter",

@@ -5,6 +5,7 @@ const carsSlice = createSlice({
   name: "cars",
   initialState: {
     items: [],
+    favouriteCars: [],
     car: {},
     loading: false,
     error: false,
@@ -17,6 +18,11 @@ const carsSlice = createSlice({
       .addCase(fetchCarId.fulfilled, (state, action) => {
         state.car = action.payload;
       });
+  },
+  reducers: {
+    addToFavouriteCar(state, action) {
+      state.favouriteCars.push(action.payload);
+    },
   },
 });
 
@@ -140,5 +146,5 @@ export const fullfiltered = createSelector(
 //     });
 //   }
 // );
-
+export const { addToFavouriteCar } = carsSlice.actions;
 export default carsSlice.reducer;

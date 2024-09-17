@@ -1,13 +1,19 @@
 import css from "./Car.module.css";
 import sprite from "../../images/sprite.svg";
 import { Link } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
+import { addToFavouriteCar } from "../../Redux/cars/slice.js";
 export default function Car({ car }) {
   // console.log(car.AC);
 
   const picture = car;
-  console.log(car.transmission);
-
+  const favouriteSelect = useSelector(favouriteCarsSelector);
+  console.log(favouriteSelect);
+  const dispatch = useDispatch();
+  const handleAddToFavourite = () => {
+    dispatch(addToFavouriteCar(car));
+  };
   return (
     <div className={css.container}>
       <div
@@ -20,7 +26,7 @@ export default function Car({ car }) {
           <div className={css.mainInfo}>
             <div className={css.priceContainer}>
               <p className={css.price}>€{car.price}</p>
-              <svg className={css.iconHeart}>
+              <svg className={css.iconHeart} onClick={handleAddToFavourite}>
                 <use href={`${sprite}#icon-heart`}></use>
               </svg>
             </div>

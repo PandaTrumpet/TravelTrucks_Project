@@ -38,7 +38,7 @@ export default function Sidebar() {
 
     dispatch(filterCars(selectedFilters));
     dispatch(filterCity(e.target.location.value));
-
+    e.resetForm();
     // console.log("Selected filters:", selectedFilters);
   };
 
