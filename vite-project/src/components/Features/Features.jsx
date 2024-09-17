@@ -12,35 +12,67 @@ export default function Features() {
   return (
     <div className={css.container}>
       <ul className={css.list}>
+        {car.transmission === "automatic" && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-diagram`}></use>
+            </svg>
+            <p className={css.iconText}>Automatic</p>
+          </li>
+        )}
+        {car.gas && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-gaz`}></use>
+            </svg>
+            <p className={css.iconText}>Petrol</p>
+          </li>
+        )}
+        {car.kitchen && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-cup-hot`}></use>
+            </svg>
+            <p className={css.iconText}>Kitchen</p>
+          </li>
+        )}
+        {car.AC && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-wind`}></use>
+            </svg>
+            <p className={css.iconText}>AC</p>
+          </li>
+        )}
+        {car.TV && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-tv`}></use>
+            </svg>
+            <p className={css.iconText}>TV</p>
+          </li>
+        )}
+        {car.bathroom && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-bi_droplet`}></use>
+            </svg>
+            <p className={css.iconText}>Bathroom</p>
+          </li>
+        )}
+        {car.radio && (
+          <li className={css.listItem}>
+            <svg className={css.icon}>
+              <use href={`${sprite}#icon-ui-radios`}></use>
+            </svg>
+            <p className={css.iconText}>Radio</p>
+          </li>
+        )}
         <li className={css.listItem}>
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-diagram`}></use>
+            <use href={`${sprite}#icon-edults`}></use>
           </svg>
-          <p>Automatic</p>
-        </li>
-        <li className={css.listItem}>
-          <svg className={css.icon}>
-            <use href={`${sprite}#icon-wind`}></use>
-          </svg>
-          <p>AC</p>
-        </li>
-        <li className={css.listItem}>
-          <svg className={css.icon}>
-            <use href={`${sprite}#icon-gaz`}></use>
-          </svg>
-          <p>Petrol</p>
-        </li>
-        <li className={css.listItem}>
-          <svg className={css.icon}>
-            <use href={`${sprite}#icon-cup-hot`}></use>
-          </svg>
-          <p>Kitchen</p>
-        </li>
-        <li className={css.listItem}>
-          <svg className={css.icon}>
-            <use href={`${sprite}#icon-ui-radios`}></use>
-          </svg>
-          <p>Radio</p>
+          <p className={css.iconText}>2 adults</p>
         </li>
       </ul>
       <h3 className={css.titleDetails}>Vehicle details</h3>

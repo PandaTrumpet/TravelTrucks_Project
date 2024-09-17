@@ -114,7 +114,7 @@
     background: var(--button-hover);
 }
 
-.automaticIcon {
+.icon {
     width: 20px;
     height: 20px;
     fill: var(--main);

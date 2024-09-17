@@ -45,7 +45,7 @@ export default function Car({ car }) {
         <ul className={css.iconList}>
           {car.transmission === "automatic" && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-diagram`}></use>
               </svg>
               <p className={css.iconText}>Automatic</p>
@@ -53,7 +53,7 @@ export default function Car({ car }) {
           )}
           {car.gas && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-gaz`}></use>
               </svg>
               <p className={css.iconText}>Petrol</p>
@@ -61,7 +61,7 @@ export default function Car({ car }) {
           )}
           {car.kitchen && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-cup-hot`}></use>
               </svg>
               <p className={css.iconText}>Kitchen</p>
@@ -69,7 +69,7 @@ export default function Car({ car }) {
           )}
           {car.AC && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-wind`}></use>
               </svg>
               <p className={css.iconText}>AC</p>
@@ -77,7 +77,7 @@ export default function Car({ car }) {
           )}
           {car.TV && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-tv`}></use>
               </svg>
               <p className={css.iconText}>TV</p>
@@ -85,7 +85,7 @@ export default function Car({ car }) {
           )}
           {car.bathroom && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-bi_droplet`}></use>
               </svg>
               <p className={css.iconText}>Bathroom</p>
@@ -93,14 +93,14 @@ export default function Car({ car }) {
           )}
           {car.radio && (
             <li className={css.iconItem}>
-              <svg className={css.automaticIcon}>
+              <svg className={css.icon}>
                 <use href={`${sprite}#icon-ui-radios`}></use>
               </svg>
               <p className={css.iconText}>Radio</p>
             </li>
           )}
           <li className={css.iconItem}>
-            <svg className={css.automaticIcon}>
+            <svg className={css.icon}>
               <use href={`${sprite}#icon-edults`}></use>
             </svg>
             <p className={css.iconText}>2 adults</p>
