@@ -92,3 +92,51 @@
     line-height: 150%;
     color: var(--text);
 }
+
+.btn {
+    border-radius: 200px;
+    padding: 16px 60px;
+    width: 166px;
+
+    background: var(--button);
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    text-decoration: none;
+    transition: background 300ms ease-in-out;
+
+}
+
+.btn:hover {
+    background: var(--button-hover);
+}
+
+.automaticIcon {
+    width: 20px;
+    height: 20px;
+    fill: var(--main);
+}
+
+.iconText {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: var(--main);
+}
+
+.iconItem {
+    display: flex;
+    gap: 8px;
+    padding: 12px 18px;
+}
+
+.iconList {
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}

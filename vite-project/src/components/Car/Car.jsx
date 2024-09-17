@@ -6,6 +6,7 @@ export default function Car({ car }) {
   // console.log(car.AC);
 
   const picture = car;
+  console.log(car.transmission);
 
   return (
     <div className={css.container}>
@@ -41,24 +42,69 @@ export default function Car({ car }) {
             ? car.description.slice(0, 64) + "..."
             : car.description}
         </p>
-        {/* <ul>
-          <li>
-            <svg>
-              <use></use>
-            </svg>
-            <p></p>
-          </li>
-          <li>
-            <svg>
-              <use></use>
-            </svg>
-            <p></p>
-          </li>
-        </ul> */}
+        <ul className={css.iconList}>
+          {car.transmission === "automatic" && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-diagram`}></use>
+              </svg>
+              <p className={css.iconText}>Automatic</p>
+            </li>
+          )}
+          {car.gas && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-gaz`}></use>
+              </svg>
+              <p className={css.iconText}>Petrol</p>
+            </li>
+          )}
+          {car.kitchen && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-cup-hot`}></use>
+              </svg>
+              <p className={css.iconText}>Kitchen</p>
+            </li>
+          )}
+          {car.AC && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-wind`}></use>
+              </svg>
+              <p className={css.iconText}>AC</p>
+            </li>
+          )}
+          {car.TV && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-tv`}></use>
+              </svg>
+              <p className={css.iconText}>TV</p>
+            </li>
+          )}
+          {car.bathroom && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-bi_droplet`}></use>
+              </svg>
+              <p className={css.iconText}>Bathroom</p>
+            </li>
+          )}
+          {car.radio && (
+            <li className={css.iconItem}>
+              <svg className={css.automaticIcon}>
+                <use href={`${sprite}#icon-ui-radios`}></use>
+              </svg>
+              <p className={css.iconText}>Radio</p>
+            </li>
+          )}
+        </ul>
         <Link
           to={`/catalog/${car.id}`}
           target="blank"
           rel="noopener noreferrer"
+          className={css.btn}
         >
           Show more
         </Link>
