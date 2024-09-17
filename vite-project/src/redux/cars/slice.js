@@ -23,6 +23,11 @@ const carsSlice = createSlice({
     addToFavouriteCar(state, action) {
       state.favouriteCars.push(action.payload);
     },
+    deleteFavouriteCar(state, action) {
+      state.favouriteCars = state.favouriteCars.filter(
+        (car) => car.id !== action.payload.id
+      );
+    },
   },
 });
 
@@ -146,5 +151,5 @@ export const fullfiltered = createSelector(
 //     });
 //   }
 // );
-export const { addToFavouriteCar } = carsSlice.actions;
+export const { addToFavouriteCar, deleteFavouriteCar } = carsSlice.actions;
 export default carsSlice.reducer;
