@@ -99,6 +99,12 @@ export default function Car({ car }) {
               <p className={css.iconText}>Radio</p>
             </li>
           )}
+          <li className={css.iconItem}>
+            <svg className={css.automaticIcon}>
+              <use href={`${sprite}#icon-edults`}></use>
+            </svg>
+            <p className={css.iconText}>2 adults</p>
+          </li>
         </ul>
         <Link
           to={`/catalog/${car.id}`}
