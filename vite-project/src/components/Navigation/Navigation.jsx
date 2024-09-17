@@ -21,6 +21,11 @@ export default function Navigation() {
             Catalog
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/" className={linkClass}>
+            Favourite
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
