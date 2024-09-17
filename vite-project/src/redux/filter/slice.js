@@ -6,13 +6,14 @@ const filterSlice = createSlice({
   name: "filter",
   initialState: {
     filterItem: {},
+    location: "",
   },
   reducers: {
     filterCars(state, action) {
       state.filterItem = action.payload;
     },
     filterCity(state, action) {
-      state.city = action.payload;
+      state.location = action.payload;
       // const cars = state.cars.items;
       // cars.filter((car) => car.location.includes(action.payload));
     },

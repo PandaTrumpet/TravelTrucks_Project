@@ -2,7 +2,10 @@ import css from "./Sidebar.module.css";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useId, useState } from "react";
-import { filterSelector } from "../../redux/filter/selectors.js";
+import {
+  filterSelector,
+  locationSelector,
+} from "../../redux/filter/selectors.js";
 import { filterCars, filterCity } from "../../redux/filter/slice.js";
 import { carsSelector } from "../../redux/cars/selectors.js";
 
@@ -13,7 +16,7 @@ export default function Sidebar() {
   const [isCheckedTV, setIsCheckedTV] = useState(false);
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
-  const [city, setCity] = useState("");
+  // const [city, setCity] = useState("");
   // console.log(city);
 
   const dispatch = useDispatch();
@@ -31,7 +34,6 @@ export default function Sidebar() {
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
       form: selectedVehicleType, // Single selected vehicle type
-      // location: city,
     };
 
     dispatch(filterCars(selectedFilters));
@@ -39,6 +41,9 @@ export default function Sidebar() {
 
     // console.log("Selected filters:", selectedFilters);
   };
+
+  const locationName = useSelector(locationSelector);
+  console.log(locationName);
 
   // const apartments = [
   //   { id: 1, TV: true, AC: true, area: 50 },
@@ -100,9 +105,9 @@ export default function Sidebar() {
             className={css.location}
             id={locationId}
             placeholder="City"
-            onChange={(e) => {
-              setCity(e.target.value);
-            }}
+            // onChange={(e) => {
+            //   setCity(e.target.value);
+            // }}
             name="location" // Change name to "location" to avoid confusion with vehicleType
           />
           <svg className={css.iconMap}>
