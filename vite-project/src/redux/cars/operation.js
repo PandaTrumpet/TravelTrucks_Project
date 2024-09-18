@@ -3,10 +3,10 @@ import axios from "axios";
 axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 export const fetchCars = createAsyncThunk(
   "cars/fetchCars",
-  async (_, thunkAPI) => {
+  async (currunePage, thunkAPI) => {
     try {
       const response = await axios.get("/campers", {
-        params: { limit: 4, page: 2 },
+        params: { limit: 4, page: currunePage },
       });
 
       return response.data.items;
