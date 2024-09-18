@@ -5,7 +5,8 @@ const carsSlice = createSlice({
   name: "cars",
   initialState: {
     items: [],
-    favouriteCars: [],
+    // favouriteCars: [],
+    favouriteCars: JSON.parse(localStorage.getItem("favouriteCars")) || [],
     car: {},
     loading: false,
     error: false,
@@ -26,11 +27,24 @@ const carsSlice = createSlice({
       );
       if (!isFavourite) {
         state.favouriteCars.push(action.payload);
+        localStorage.setItem(
+          "favouriteCars",
+          JSON.stringify(state.favouriteCars)
+        );
       }
     },
-    deleteFavouriteCar(state, action) {
+    // deleteFavouriteCar(state, action) {
+    //   state.favouriteCars = state.favouriteCars.filter(
+    //     (car) => car.id !== action.payload.id
+    //   );
+    // },
+    deleteFavouriteCar: (state, action) => {
       state.favouriteCars = state.favouriteCars.filter(
         (car) => car.id !== action.payload.id
+      );
+      localStorage.setItem(
+        "favouriteCars",
+        JSON.stringify(state.favouriteCars)
       );
     },
   },

@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = JSON.parse(localStorage.getItem("favouriteCars")) || [];
-
 const favouriteSlice = createSlice({
   name: "favourites",
-  initialState,
+  initialState: {
+    // favouriteCars: JSON.parse(localStorage.getItem("favouriteCars")) || [],
+    favouriteCars: [],
+  },
   reducers: {
     addToFavouriteCar: (state, action) => {
       state.push(action.payload);
@@ -20,7 +21,7 @@ const favouriteSlice = createSlice({
     },
   },
 });
-export const favouriteCarsSelector = (state) => state.favourites;
+// export const favouriteCarsSelector = (state) => state.favourites.favouriteCars;
 export const { addToFavouriteCar, deleteFavouriteCar, setFavourites } =
   favouriteSlice.actions;
 export default favouriteSlice.reducer;
