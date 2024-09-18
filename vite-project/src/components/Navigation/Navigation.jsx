@@ -21,11 +21,11 @@ export default function Navigation() {
             Catalog
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink to="/" className={linkClass}>
+        <li>
+          <NavLink to="/favourite" className={linkClass}>
             Favourite
           </NavLink>
-        </li> */}
+        </li>
       </ul>
     </nav>
   );
