@@ -14,7 +14,7 @@ const carsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCars.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = [...state.items, ...action.payload];
       })
       .addCase(fetchCarId.fulfilled, (state, action) => {
         state.car = action.payload;

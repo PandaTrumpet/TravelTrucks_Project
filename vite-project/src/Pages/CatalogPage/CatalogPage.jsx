@@ -12,7 +12,7 @@ export default function CatalogPage() {
     dispatch(fetchCars(page));
   }, [dispatch, page]);
   const handlePage = () => {
-    setPage(page + 1);
+    setPage((prevPage) => prevPage + 1); // Увеличиваем номер страницы
   };
   console.log(page);
 
