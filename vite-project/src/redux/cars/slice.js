@@ -21,7 +21,12 @@ const carsSlice = createSlice({
   },
   reducers: {
     addToFavouriteCar(state, action) {
-      state.favouriteCars.push(action.payload);
+      const isFavourite = state.favouriteCars.some(
+        (car) => car.id === action.payload.id
+      );
+      if (!isFavourite) {
+        state.favouriteCars.push(action.payload);
+      }
     },
     deleteFavouriteCar(state, action) {
       state.favouriteCars = state.favouriteCars.filter(
@@ -31,57 +36,6 @@ const carsSlice = createSlice({
   },
 });
 
-// export const filteredCars = createSelector(
-//   [(state) => state.cars.items, (state) => state.filter.filterItem],
-//   (cars, filter) => {
-//     console.log(cars);
-
-//     return cars.filter((car) => (car.TV === filter.TV ? car : null));
-//   }
-// );
-// export const filteredCars = createSelector(
-//   [(state) => state.cars.items, (state) => state.filter.filterItem],
-//   (cars, filter) => {
-//     return cars.filter((car) => {
-//       if (filter.TV === undefined || filter.TV === null) {
-//         return true; // Возвращаем все автомобили
-//       }
-
-//       return car.TV === filter.TV;
-//     });
-//   }
-// );
-// export const filteredCars = createSelector(
-//   [(state) => state.cars.items, (state) => state.filter.filterItem],
-//   (cars, filter) => {
-//     return cars.filter((car) => {
-//       return Object.keys(filter).every((key) => {
-//         return car[key] === filter[key];
-//       });
-//     });
-//   }
-// );
-
-// export const filteredCars = createSelector(
-//   [(state) => state.cars.items, (state) => state.filter.filterItem],
-//   (cars, filter) => {
-//     return cars.filter((car) => {
-//       // console.log(car);
-
-//       return Object.keys(filter).every((key) => {
-//         // console.log(filter);
-
-//         // Применяем фильтр только если он задан (не undefined и не null)
-//         if (filter[key] === false || filter[key] === null) {
-//           // console.log(filter);
-
-//           return true; // Пропускаем этот критерий фильтрации
-//         }
-//         return car[key] === filter[key]; // Сравниваем с фильтром
-//       });
-//     });
-//   }
-// );
 export const filteredCars = createSelector(
   [(state) => state.cars.items, (state) => state.filter.filterItem],
   (cars, filter) => {
@@ -114,42 +68,6 @@ export const fullfiltered = createSelector(
     );
   }
 );
-// export const filteredCars = createSelector(
-//   [
-//     (state) => state.cars.items,
-//     (state) => state.filter.filterItem,
-//     (state) => state.filter.location, // Получаем город из состояния фильтра
-//   ],
-//   (cars, filter, location) => {
-//     // Проверяем, если все фильтры либо пусты, либо false, либо null
-//     const noFiltersApplied = Object.keys(filter).every(
-//       (key) => filter[key] === false || filter[key] === null
-//     );
 
-//     // Если нет активных фильтров и не выбран город, возвращаем все автомобили
-//     if (noFiltersApplied && !location) {
-//       return cars;
-//     }
-
-//     // Применяем фильтрацию по выбранным параметрам
-//     return cars.filter((car) => {
-//       // Фильтрация по городам (если указан город)
-//       if (
-//         city &&
-//         !car.location.toLowerCase().includes(location.toLowerCase())
-//       ) {
-//         return false; // Пропускаем автомобиль, если город не совпадает
-//       }
-
-//       // Применяем остальные фильтры
-//       return Object.keys(filter).every((key) => {
-//         if (filter[key] === false || filter[key] === null) {
-//           return true; // Пропускаем этот критерий фильтрации
-//         }
-//         return car[key] === filter[key]; // Сравниваем с фильтром
-//       });
-//     });
-//   }
-// );
 export const { addToFavouriteCar, deleteFavouriteCar } = carsSlice.actions;
 export default carsSlice.reducer;
