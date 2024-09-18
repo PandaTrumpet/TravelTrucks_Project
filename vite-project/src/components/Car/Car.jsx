@@ -8,6 +8,7 @@ import {
   addToFavouriteCar,
   deleteFavouriteCar,
 } from "../../Redux/cars/slice.js";
+import { useEffect } from "react";
 export default function Car({ car }) {
   const [isFavourite, setIsFavourite] = useState(false);
   const picture = car;
@@ -21,7 +22,11 @@ export default function Car({ car }) {
     dispatch(deleteFavouriteCar(car));
   };
   const iconRef = useRef();
-
+  useEffect(() => {
+    // Перевірка, чи автомобіль вже в обраних
+    const isFavouriteCar = favouriteSelect.some((item) => item.id === car.id);
+    setIsFavourite(isFavouriteCar);
+  }, [favouriteSelect, car.id]);
   const toggleFavourite = () => {
     setIsFavourite(!isFavourite);
     if (isFavourite) {

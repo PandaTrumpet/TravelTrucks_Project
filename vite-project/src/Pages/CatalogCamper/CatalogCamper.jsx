@@ -1,4 +1,10 @@
-import { useParams, NavLink, Outlet } from "react-router-dom";
+import {
+  useParams,
+  NavLink,
+  Outlet,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { useEffect } from "react";
 import clsx from "clsx";
 import css from "./CatalogCamper.module.css";
@@ -12,11 +18,21 @@ export default function CatalogCamper() {
   const { id } = useParams();
   // const location = useLocation();
   // console.log(location);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  // useEffect(() => {
+  //   dispatch(fetchCarId(id));
+  // }, [dispatch, id]);
   useEffect(() => {
     dispatch(fetchCarId(id));
-  }, [dispatch, id]);
+
+    // Проверяем, находимся ли мы на основном пути "/catalog/:id"
+    if (location.pathname === `/catalog/${id}`) {
+      // Перенаправляем на "features", если пользователь на основном маршруте
+      navigate("features", { replace: true });
+    }
+  }, [dispatch, id, location.pathname, navigate]);
 
   const activeClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
