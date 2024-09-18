@@ -11,6 +11,7 @@
     border-radius: 12px;
     /* padding: 16px 18px; */
     gap: 8px;
+    transition: transform 200ms ease-in-out
 }
 
 .sidebar {
@@ -18,7 +19,19 @@
 }
 
 .checkboxContainer.active {
-    border-color: red;
+    border-color: var(--button-hover);
+}
+
+.checkboxContainer:hover {
+    transform: scale(1.1);
+}
+
+.checkboxContainer:hover .icon {
+    fill: var(--button-hover);
+}
+
+.checkboxContainer:hover .text {
+    color: var(--button-hover);
 }
 
 .hiddenCheckbox {
@@ -28,6 +41,7 @@
 .icon {
     width: 32px;
     height: 32px;
+    transition: fill 200ms ease-in-out;
 
 }
 
@@ -39,6 +53,7 @@
     letter-spacing: -0.01em;
     text-align: center;
     color: var(--main);
+    transition: color 200ms ease-in-out;
 }
 
 .list {
@@ -62,7 +77,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
-    color: var(--text);
+    color: var(--main);
     margin-top: 40px;
 }
 
@@ -71,7 +86,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-    color: var(--gray);
+    color: var(--main);
 }
 
 .locationCont {

@@ -16,8 +16,7 @@ import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 import { Suspense } from "react";
 export default function CatalogCamper() {
   const { id } = useParams();
-  // const location = useLocation();
-  // console.log(location);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
