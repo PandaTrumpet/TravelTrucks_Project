@@ -8,7 +8,6 @@ export default function Reviews() {
   const car = useSelector(oneCarSelector);
   const reviews = car?.reviews || [];
   console.log(reviews);
-
   return (
     <div className={css.container}>
       <ul className={css.reviewsList}>

@@ -1,3 +1,4 @@
+import css from "./LoadButton.module.css";
 import { useDispatch } from "react-redux";
 import { plusPage } from "../../Redux/cars/slice.js";
 export default function LoadButton() {
@@ -5,5 +6,9 @@ export default function LoadButton() {
   const handleClick = () => {
     dispatch(plusPage());
   };
-  return <button onClick={handleClick}>Load more</button>;
+  return (
+    <button onClick={handleClick} className={css.btn}>
+      Load more
+    </button>
+  );
 }

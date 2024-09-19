@@ -11,27 +11,19 @@ import { filterCars, filterCity } from "../../redux/filter/slice.js";
 import { carsSelector } from "../../redux/cars/selectors.js";
 
 export default function Sidebar() {
-  // const [search, setSearch] = useSearchParams();
-  // const newSearch = search.set("owner", "new");
-  // const A = setSearch(newSearch);
-  // console.log(A);
-
   const [isCheckedAC, setIsCheckedAC] = useState(false);
   const [isCheckedAutomatic, setIsCheckedAutomatic] = useState(false);
   const [isCheckedKitchen, setIsCheckedKitchen] = useState(false);
   const [isCheckedTV, setIsCheckedTV] = useState(false);
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
-  // const [city, setCity] = useState("");
-  // console.log(city);
 
   const dispatch = useDispatch();
   const cars = useSelector(carsSelector); // Получаем автомобили
   const filters = useSelector(filterSelector); // Получаем фильтры
-  // console.log(isCheckedAutomatic);
+
   const onSubmit = (e) => {
     e.preventDefault();
-    // const formData = new FormData(e.target);
 
     const selectedFilters = {
       AC: isCheckedAC,
@@ -45,37 +37,11 @@ export default function Sidebar() {
     dispatch(filterCars(selectedFilters));
     dispatch(filterCity(e.target.location.value));
     e.target.reset();
-
-    // setIsCheckedAC(false);
-    // setIsCheckedAutomatic(false);
-    // setIsCheckedKitchen(false);
-    // setIsCheckedTV(false);
-    // setIsCheckedBathroom(false);
   };
 
   const locationName = useSelector(locationSelector);
   console.log(locationName);
 
-  // const apartments = [
-  //   { id: 1, TV: true, AC: true, area: 50 },
-  //   { id: 2, TV: false, AC: true, area: 30 },
-  //   { id: 3, TV: true, AC: true, area: 45 },
-  //   { id: 4, TV: false, AC: false, area: 70 },
-  // ];
-  // const filterCriteria = {
-  //   TV: true,
-  //   AC: true,
-  // };
-  // const filterApartments = (array, criteria) => {
-  //   return array.filter((apartment) => {
-  //     return Object.keys(criteria).every((key) => {
-  //       return apartment[key] === criteria[key];
-  //     });
-  //   });
-  // };
-  // const filteredApartments = filterApartments(apartments, filterCriteria);
-
-  // console.log(filteredApartments);
   const handleDivClick = (filterName) => {
     switch (filterName) {
       case "AC":
@@ -99,7 +65,9 @@ export default function Sidebar() {
   };
 
   const handleDivClickType = (vehicleType) => {
-    setSelectedVehicleType(vehicleType); // Set the selected vehicle type
+    setSelectedVehicleType((prevType) =>
+      prevType === vehicleType ? null : vehicleType
+    );
   };
 
   const locationId = useId();

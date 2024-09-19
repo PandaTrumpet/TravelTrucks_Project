@@ -5,20 +5,15 @@ import { useDispatch } from "react-redux";
 import { fetchCars } from "../../Redux/cars/operation.js";
 import CarsList from "../../components/CarsList/CarsList.jsx";
 import css from "./CatalogPage.module.css";
-import { useState } from "react";
-import { pageSelector } from "../../redux/cars/selectors.js";
+
+// import { pageSelector } from "../../redux/cars/selectors.js";
 export default function CatalogPage() {
   const dispatch = useDispatch();
-  const page = useSelector(pageSelector);
-  console.log(page);
+  // const page = useSelector(pageSelector);
 
   useEffect(() => {
-    dispatch(fetchCars(page));
-  }, [dispatch, page]);
-  // const handlePage = () => {
-  //   setPage((prevPage) => prevPage + 1); // Увеличиваем номер страницы
-  // };
-  console.log(page);
+    dispatch(fetchCars());
+  }, [dispatch]);
 
   return (
     <div className={css.container}>

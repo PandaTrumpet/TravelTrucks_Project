@@ -11,8 +11,8 @@ export default function CarsList() {
   console.log(cars);
 
   return (
-    <div>
-      <ul>
+    <div className={css.container}>
+      <ul className={css.listCars}>
         {cars.length > 0 &&
           cars.map((car) => {
             return (
@@ -22,7 +22,7 @@ export default function CarsList() {
             );
           })}
       </ul>
-      <LoadButton />
+      {/* <LoadButton /> */}
     </div>
   );
 }

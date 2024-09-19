@@ -159,6 +159,7 @@
     line-height: 120%;
     color: var(--main);
     margin-bottom: 48px;
+    margin-top: 48px;
 }
 
 .filterVechile {
@@ -181,6 +182,7 @@
     border: none;
     outline: transparent;
     transition: background 300ms ease-in-out;
+
 }
 
 .btn:hover {

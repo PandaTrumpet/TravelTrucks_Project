@@ -1,4 +1,5 @@
 import css from "./Hero.module.css";
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 export default function Hero() {
   return (
@@ -8,11 +9,10 @@ export default function Hero() {
         <p className={css.heroText}>
           You can find everything you want in our catalog
         </p>
-        <button className={css.btn}>
-          <Link to="/catalog" className={css.btnLink}>
-            View Now
-          </Link>
-        </button>
+
+        <Link to="/catalog" className={css.btn}>
+          View Now
+        </Link>
       </div>
     </section>
   );
