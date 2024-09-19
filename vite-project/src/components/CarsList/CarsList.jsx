@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { carsSelector } from "../../redux/cars/selectors.js";
 import { filteredCars, fullfiltered } from "../../Redux/cars/slice.js";
 import LoadButton from "../LoadButton/LoadButton.jsx";
-export default function CarsList({ handlePage }) {
+export default function CarsList() {
   // const cars = useSelector(carsSelector);
   // const cars = useSelector(filteredCars);
   const cars = useSelector(fullfiltered);
@@ -22,7 +22,7 @@ export default function CarsList({ handlePage }) {
             );
           })}
       </ul>
-      <LoadButton handlePage={handlePage} />
+      <LoadButton />
     </div>
   );
 }

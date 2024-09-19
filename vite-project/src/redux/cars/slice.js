@@ -5,7 +5,8 @@ const carsSlice = createSlice({
   name: "cars",
   initialState: {
     items: [],
-    // favouriteCars: [],
+    page: 1,
+
     favouriteCars: JSON.parse(localStorage.getItem("favouriteCars")) || [],
     car: {},
     loading: false,
@@ -13,14 +14,24 @@ const carsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // .addCase(fetchCars.fulfilled, (state, action) => {
+      //   state.items = [...state.items, ...action.payload];
+      // })
       .addCase(fetchCars.fulfilled, (state, action) => {
-        state.items = [...state.items, ...action.payload];
+        if (state.page === 1) {
+          state.items = action.payload;
+        } else {
+          state.items = [...state.items, ...action.payload];
+        }
       })
       .addCase(fetchCarId.fulfilled, (state, action) => {
         state.car = action.payload;
       });
   },
   reducers: {
+    plusPage(state, action) {
+      state.page = state.page + 1;
+    },
     addToFavouriteCar(state, action) {
       const isFavourite = state.favouriteCars.some(
         (car) => car.id === action.payload.id
@@ -33,11 +44,7 @@ const carsSlice = createSlice({
         );
       }
     },
-    // deleteFavouriteCar(state, action) {
-    //   state.favouriteCars = state.favouriteCars.filter(
-    //     (car) => car.id !== action.payload.id
-    //   );
-    // },
+
     deleteFavouriteCar: (state, action) => {
       state.favouriteCars = state.favouriteCars.filter(
         (car) => car.id !== action.payload.id
@@ -83,5 +90,6 @@ export const fullfiltered = createSelector(
   }
 );
 
-export const { addToFavouriteCar, deleteFavouriteCar } = carsSlice.actions;
+export const { addToFavouriteCar, deleteFavouriteCar, plusPage } =
+  carsSlice.actions;
 export default carsSlice.reducer;
