@@ -1,25 +1,25 @@
 import css from "./VafouriteCarsPage.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
 import Car from "../../components/Car/Car.jsx";
 export default function VafouriteCars() {
   const favouriteCars = useSelector(favouriteCarsSelector);
   console.log(favouriteCars);
 
-  // return (
-  //   <div>{favouriteCars.length > 0 ? <p>There are cars</p> : <p>No</p>}</div>
-  // );
   return (
     <div className={css.container}>
       <ul>
-        {favouriteCars.length > 0 &&
+        {favouriteCars.length > 0 ? (
           favouriteCars.map((car) => {
             return (
               <li key={car.id}>
                 <Car car={car} />
               </li>
             );
-          })}
+          })
+        ) : (
+          <div>There is no favourite car...Choose the car in catalog!</div>
+        )}
       </ul>
     </div>
   );
