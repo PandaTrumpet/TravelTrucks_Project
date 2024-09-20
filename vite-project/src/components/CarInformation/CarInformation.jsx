@@ -5,13 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
-<<<<<<< Updated upstream
-import  ImageGallery  from '../ImageGallery/ImageGallery'
-=======
-//
-
-//
->>>>>>> Stashed changes
+import ImageGallery from "../ImageGallery/ImageGallery";
 export default function CarInformation() {
   //Modal
 
@@ -43,9 +37,8 @@ export default function CarInformation() {
         <p>{car.location}</p>
       </div>
       <p className={css.price}>€{car.price}.00</p>
-      {photos.length > 0 && (<ImageGallery />
-        )}
-     
+      {photos.length > 0 && <ImageGallery />}
+
       <p className={css.description}>{car.description}</p>
     </div>
   );
