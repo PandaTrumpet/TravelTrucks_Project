@@ -1,6 +1,10 @@
 .container {
     display: flex;
-    gap: 64px;
+    /* gap: 64px; */
     padding-left: 64px;
     padding-right: 64px;
+}
+
+.sideBarContainer {
+    margin-right: 64px;
 }

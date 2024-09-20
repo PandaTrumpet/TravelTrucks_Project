@@ -17,7 +17,10 @@ export default function CatalogPage() {
 
   return (
     <div className={css.container}>
-      <Sidebar />
+      <div className={css.sideBarContainer}>
+        <Sidebar />
+      </div>
+
       <CarsList />
     </div>
   );
