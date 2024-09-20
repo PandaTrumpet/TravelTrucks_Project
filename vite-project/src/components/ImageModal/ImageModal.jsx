@@ -10,7 +10,6 @@ const customStyles= {
             bottom: 0,
             backgroundColor: "rgb(60, 60, 60, 0.75)",
     }
-
     ,
     content: {
         top: "50%",
@@ -23,69 +22,21 @@ const customStyles= {
             border: "none",
             width: "900px",
     }
-
     ,
 }
-
 ;
-
-export default function ImageModal({
-    open, closeModal, selectedImage
-
-}) {
-    return (<> <div> <Modal isOpen= {
-            open
-        }
-
-        onRequestClose= {
-            closeModal
-        }
-
-        style= {
-            customStyles
-        }
-
+export default function ImageModal({ photos}) {
+    return (<>  <Modal 
+        onRequestClose={()=>{console.log("Hello");
+        }}
+        style={customStyles}
         contentLabel="Image Modal"
+        ariaHideApp={false}>
+        
+        {/* {selectedImge && (<> <img 
+            src={selectedImage.urls.regular}
+            alt={selectedImage.alt_description}/>  </>)
+        } */}
 
-        ariaHideApp= {
-            false
-        }
-
-        > {
-            selectedImage && (<> <img onClick= {
-                    closeModal
-                }
-
-                src= {
-                    selectedImage.urls.regular
-                }
-
-                alt= {
-                    selectedImage.alt_description
-                }
-
-                /> <div className= {
-                    css.modalPhotoContainer
-                }
-
-                > <p className= {
-                    css.modalText
-                }
-
-                > Photo by: {
-                    selectedImage.user.name
-                }
-
-                </p> <p className= {
-                    css.modalText
-                }
-
-                > Instagram: {
-                    selectedImage.user.instagram_username
-                }
-
-                </p> </div> </>)
-        }
-
-        </Modal> </div> </>);
+        </Modal>  </>);
 }

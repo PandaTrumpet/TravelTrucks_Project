@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
+import  ImageGallery  from '../ImageGallery/ImageGallery'
 export default function CarInformation() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -32,19 +33,9 @@ export default function CarInformation() {
         <p>{car.location}</p>
       </div>
       <p className={css.price}>€{car.price}</p>
-      <ul className={css.fotoList}>
-        {photos &&
-          photos.map((photo, index) => {
-            return (
-              <li key={index}>
-                <div
-                  className={css.carFoto}
-                  style={{ backgroundImage: `url(${photo.original})` }}
-                ></div>
-              </li>
-            );
-          })}
-      </ul>
+      {photos.length > 0 && (<ImageGallery />
+        )}
+     
       <p className={css.description}>{car.description}</p>
     </div>
   );

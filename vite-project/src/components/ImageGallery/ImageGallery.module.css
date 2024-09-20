@@ -1,0 +1,14 @@
+.fotoList {
+    display: flex;
+    gap: 40px;
+    /* justify-content: space-between; */
+}
+.carFoto {
+    border-radius: 10px;
+    width: 292px;
+    height: 312px;
+    background-size: cover;
+    background-position: center top;
+
+
+}
