@@ -1,4 +1,3 @@
-
 // import { useEffect, useState } from 'react';
 // import css from './ImageGallery.module.css';
 // import { fetchCarId } from "../../Redux/cars/operation.js";
@@ -10,13 +9,13 @@
 // export default function ImageGallery() {
 //   const [isOpen, setIsOpen] = useState(false);
 //   const [selectedImage, setSelectedImage] = useState(null); // Для хранения выбранного изображения
-//   const { id } = useParams();    
+//   const { id } = useParams();
 //   const dispatch = useDispatch();
 //   const car = useSelector(oneCarSelector);
 //   const photos = car?.gallery || [];
 
-//   useEffect(() => { 
-//     dispatch(fetchCarId(id)); 
+//   useEffect(() => {
+//     dispatch(fetchCarId(id));
 //   }, [dispatch, id]);
 
 //   const openModal = (photo) => {
@@ -74,7 +73,7 @@
 //         ariaHideApp={false}
 //         contentLabel="Image Modal"
 //       >
-      
+
 //         {selectedImage && ( // Если изображение выбрано, рендерим его
 //           <div>
 //             <img src={selectedImage.original} onClick={closeModal} alt="Selected" style={{ width: '100%',height:'100%' }} />
@@ -85,25 +84,24 @@
 //   );
 // }
 
-
-import { useEffect, useState } from 'react';
-import css from './ImageGallery.module.css';
+import { useEffect, useState } from "react";
+import css from "./ImageGallery.module.css";
 import { fetchCarId } from "../../Redux/cars/operation.js";
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 export default function ImageGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null); // Для хранения выбранного изображения
-  const { id } = useParams();    
+  const { id } = useParams();
   const dispatch = useDispatch();
   const car = useSelector(oneCarSelector);
   const photos = car?.gallery || [];
 
-  useEffect(() => { 
-    dispatch(fetchCarId(id)); 
+  useEffect(() => {
+    dispatch(fetchCarId(id));
   }, [dispatch, id]);
 
   const openModal = (photo) => {
@@ -131,11 +129,11 @@ export default function ImageGallery() {
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-        transform: "translate(-50%, -50%)",
-      borderRadius:'20px',
+      transform: "translate(-50%, -50%)",
+      borderRadius: "20px",
       padding: 0,
       border: "none",
-      maxWidth: "90vw", // Ограничение максимальной ширины
+      maxWidth: "90vw",
       maxHeight: "90vh", // Ограничение максимальной высоты
     },
   };
@@ -164,16 +162,22 @@ export default function ImageGallery() {
         contentLabel="Image Modal"
       >
         {selectedImage && ( // Если изображение выбрано, рендерим его
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
             <img
               src={selectedImage.original}
               onClick={closeModal}
               alt="Selected"
-                          style={{
-            
-                maxWidth: '100%',
-                maxHeight: '90vh', // Ограничение по высоте
-                objectFit: 'contain', // Адаптирует изображение под размер контейнера
+              style={{
+                maxWidth: "100%",
+                maxHeight: "90vh", // Ограничение по высоте
+                objectFit: "contain", // Адаптирует изображение под размер контейнера
               }}
             />
           </div>

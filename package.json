@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-modal": "^3.16.1",
-    "react-router-dom": "^6.26.2"
-  }
-}
