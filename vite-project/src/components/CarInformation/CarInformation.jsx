@@ -32,7 +32,7 @@ export default function CarInformation() {
         </svg>
         <p>{car.location}</p>
       </div>
-      <p className={css.price}>€{car.price}</p>
+      <p className={css.price}>€{car.price}.00</p>
       {photos.length > 0 && (<ImageGallery />
         )}
      

@@ -47,7 +47,7 @@ export default function Car({ car }) {
           <h3 className={css.name}>{car.name}</h3>
           <div className={css.mainInfo}>
             <div className={css.priceContainer}>
-              <p className={css.price}>€{car.price}</p>
+              <p className={css.price}>€{car.price}.00</p>
               <svg
                 className={`${css.iconHeart} ${
                   isFavourite ? css.favourite : ""

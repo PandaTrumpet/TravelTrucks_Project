@@ -9,6 +9,10 @@
     height: 312px;
     background-size: cover;
     background-position: center top;
+transition: transform 300ms ease-in-out;
+cursor:zoom-in;
 
-
+}
+.carFoto:hover {
+    transform: scale(1.1);
 }
