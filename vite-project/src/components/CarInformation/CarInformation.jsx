@@ -5,8 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
+<<<<<<< Updated upstream
 import  ImageGallery  from '../ImageGallery/ImageGallery'
+=======
+//
+
+//
+>>>>>>> Stashed changes
 export default function CarInformation() {
+  //Modal
+
+  //
+
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
