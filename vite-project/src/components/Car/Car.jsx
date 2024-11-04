@@ -1,4 +1,5 @@
 import css from "./Car.module.css";
+import toast, { Toaster } from "react-hot-toast";
 import sprite from "../../images/sprite.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -17,9 +18,11 @@ export default function Car({ car }) {
   const dispatch = useDispatch();
   const addToFavourite = () => {
     dispatch(addToFavouriteCar(car));
+    toast.success("This car was added to  favourite!", { duration: 600 });
   };
   const deleteCarFromFavourite = () => {
     dispatch(deleteFavouriteCar(car));
+    toast.success("This car was deleted from  favourite!", { duration: 600 });
   };
   const iconRef = useRef();
   useEffect(() => {
@@ -149,6 +152,7 @@ export default function Car({ car }) {
           Show more
         </Link>
       </div>
+      <Toaster />
     </div>
   );
 }
