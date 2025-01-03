@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import clsx from "clsx";
 import css from "./CatalogCamper.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCarId } from "../../Redux/cars/operation.js";
+import { fetchCarId } from "../../redux/cars/operation.js";
 import CarInformation from "../../components/CarInformation/CarInformation.jsx";
 import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 import { Suspense } from "react";
