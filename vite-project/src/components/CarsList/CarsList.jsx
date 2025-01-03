@@ -1,12 +1,9 @@
 import css from "./CarsList.module.css";
 import Car from "../Car/Car.jsx";
 import { useSelector } from "react-redux";
-import { carsSelector } from "../../redux/cars/selectors.js";
-import { filteredCars, fullfiltered } from "../../Redux/cars/slice.js";
-import LoadButton from "../LoadButton/LoadButton.jsx";
+import { fullfiltered } from "../../Redux/cars/slice.js";
+
 export default function CarsList() {
-  // const cars = useSelector(carsSelector);
-  // const cars = useSelector(filteredCars);
   const cars = useSelector(fullfiltered);
   console.log(cars);
 
@@ -22,7 +19,6 @@ export default function CarsList() {
             );
           })}
       </ul>
-      {/* <LoadButton /> */}
     </div>
   );
 }

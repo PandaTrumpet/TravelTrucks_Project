@@ -7,10 +7,6 @@ import { fetchCarId } from "../../Redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
 import ImageGallery from "../ImageGallery/ImageGallery";
 export default function CarInformation() {
-  //Modal
-
-  //
-
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
@@ -18,8 +14,6 @@ export default function CarInformation() {
   }, [dispatch, id]);
   const car = useSelector(oneCarSelector);
   const userReviews = car.reviews?.length || [];
-
-  //   console.log(userReviews);
 
   const photos = car?.gallery || [];
   return (

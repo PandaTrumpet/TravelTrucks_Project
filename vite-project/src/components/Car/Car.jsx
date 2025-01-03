@@ -1,7 +1,7 @@
 import css from "./Car.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import sprite from "../../images/sprite.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
@@ -26,7 +26,6 @@ export default function Car({ car }) {
   };
   const iconRef = useRef();
   useEffect(() => {
-    // Перевірка, чи автомобіль вже в обраних
     const isFavouriteCar = favouriteSelect.some((item) => item.id === car.id);
     setIsFavourite(isFavouriteCar);
   }, [favouriteSelect, car.id]);
