@@ -1,22 +1,7 @@
 import { useId } from "react";
 import css from "./BookingForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
-
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  date: Yup.string()
-    .matches(
-      /^\d{4}-\d{2}-\d{2} - \d{4}-\d{2}-\d{2}$/,
-      "Date must be in format YYYY-MM-DD - YYYY-MM-DD"
-    )
-    .required("Date is required"),
-  message: Yup.string(),
-});
 
 const initialValues = { name: "", email: "", message: "", date: "" };
 
@@ -38,11 +23,7 @@ export default function BookingForm() {
       <p className={css.formText}>
         Stay connected! We are always ready to help you.
       </p>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {() => (
           <Form className={css.form}>
             <label htmlFor={nameId}>
