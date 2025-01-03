@@ -3,7 +3,7 @@ import sprite from "../../images/sprite.svg";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchCarId } from "../../Redux/cars/operation.js";
+import { fetchCarId } from "../../redux/cars/operation.js";
 import { oneCarSelector } from "../../redux/cars/selectors.js";
 import ImageGallery from "../ImageGallery/ImageGallery";
 export default function CarInformation() {

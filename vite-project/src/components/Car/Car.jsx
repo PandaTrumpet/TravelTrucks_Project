@@ -8,7 +8,7 @@ import { favouriteCarsSelector } from "../../redux/cars/selectors.js";
 import {
   addToFavouriteCar,
   deleteFavouriteCar,
-} from "../../Redux/cars/slice.js";
+} from "../../redux/cars/slice.js";
 import { useEffect } from "react";
 export default function Car({ car }) {
   const [isFavourite, setIsFavourite] = useState(false);

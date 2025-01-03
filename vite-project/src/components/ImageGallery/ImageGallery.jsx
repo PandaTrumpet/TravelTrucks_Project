@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import css from "./ImageGallery.module.css";
-import { fetchCarId } from "../../Redux/cars/operation.js";
+import { fetchCarId } from "../../redux/cars/operation.js";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { oneCarSelector } from "../../redux/cars/selectors.js";

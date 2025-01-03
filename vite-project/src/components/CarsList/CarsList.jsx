@@ -1,7 +1,7 @@
 import css from "./CarsList.module.css";
 import Car from "../Car/Car.jsx";
 import { useSelector } from "react-redux";
-import { fullfiltered } from "../../Redux/cars/slice.js";
+import { fullfiltered } from "../../redux/cars/slice.js";
 
 export default function CarsList() {
   const cars = useSelector(fullfiltered);
