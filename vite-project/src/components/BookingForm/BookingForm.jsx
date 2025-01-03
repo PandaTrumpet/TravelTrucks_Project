@@ -1,7 +1,7 @@
 import { useId } from "react";
 import css from "./BookingForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 
 const validationSchema = Yup.object({
