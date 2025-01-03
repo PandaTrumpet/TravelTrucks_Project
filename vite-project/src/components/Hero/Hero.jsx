@@ -1,5 +1,4 @@
 import css from "./Hero.module.css";
-import clsx from "clsx";
 import { Link } from "react-router-dom";
 export default function Hero() {
   return (

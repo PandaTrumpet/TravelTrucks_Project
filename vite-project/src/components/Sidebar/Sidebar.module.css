@@ -9,7 +9,6 @@
     height: 96px;
     border: 1px solid transparent;
     border-radius: 12px;
-    /* padding: 16px 18px; */
     gap: 8px;
     transition: transform 200ms ease-in-out
 }
@@ -42,11 +41,9 @@
     width: 32px;
     height: 32px;
     transition: fill 200ms ease-in-out;
-
 }
 
 .text {
-
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
@@ -63,7 +60,6 @@
 }
 
 .vehicleTitle {
-
     font-weight: 600;
     font-size: 20px;
     line-height: 120%;
@@ -73,7 +69,6 @@
 }
 
 .filterText {
-
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
@@ -106,9 +101,6 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--main);
-
-
-
 }
 
 .location::placeholder {
@@ -141,9 +133,6 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-
-
-
 }
 
 
@@ -153,7 +142,6 @@
 }
 
 .vechileText {
-
     font-weight: 600;
     font-size: 20px;
     line-height: 120%;
@@ -182,7 +170,6 @@
     border: none;
     outline: transparent;
     transition: background 300ms ease-in-out;
-
 }
 
 .btn:hover {

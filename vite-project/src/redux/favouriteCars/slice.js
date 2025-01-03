@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const favouriteSlice = createSlice({
   name: "favourites",
   initialState: {
-    // favouriteCars: JSON.parse(localStorage.getItem("favouriteCars")) || [],
     favouriteCars: [],
   },
   reducers: {
@@ -21,7 +20,6 @@ const favouriteSlice = createSlice({
     },
   },
 });
-// export const favouriteCarsSelector = (state) => state.favourites.favouriteCars;
 export const { addToFavouriteCar, deleteFavouriteCar, setFavourites } =
   favouriteSlice.actions;
 export default favouriteSlice.reducer;

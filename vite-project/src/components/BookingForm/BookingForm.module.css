@@ -2,21 +2,15 @@
     resize: none;
     outline: transparent;
     border: none;
-
     padding: 18px 327px 18px 18px;
-
-
     color: var(--main);
     background: var(--inputs);
     border-radius: 12px;
-
     width: 527px;
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-
-
 }
 
 .textarea::placeholder {
@@ -32,7 +26,6 @@
 }
 
 .formTitle {
-
     font-weight: 600;
     font-size: 20px;
     line-height: 120%;
@@ -41,7 +34,6 @@
 }
 
 .formText {
-
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
@@ -58,7 +50,6 @@
 .input {
     width: 527px;
     padding: 18px 327px 18px 18px;
-
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
@@ -70,7 +61,6 @@
 }
 
 .input::placeholder {
-
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;

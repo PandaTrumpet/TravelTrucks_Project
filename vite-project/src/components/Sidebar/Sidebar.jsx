@@ -1,7 +1,6 @@
 import css from "./Sidebar.module.css";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
 import { useId, useState } from "react";
 import {
   filterSelector,
@@ -16,11 +15,11 @@ export default function Sidebar() {
   const [isCheckedKitchen, setIsCheckedKitchen] = useState(false);
   const [isCheckedTV, setIsCheckedTV] = useState(false);
   const [isCheckedBathroom, setIsCheckedBathroom] = useState(false);
-  const [selectedVehicleType, setSelectedVehicleType] = useState(null); // Use single state for selected vehicle type
+  const [selectedVehicleType, setSelectedVehicleType] = useState(null);
 
   const dispatch = useDispatch();
-  const cars = useSelector(carsSelector); // Получаем автомобили
-  const filters = useSelector(filterSelector); // Получаем фильтры
+  const cars = useSelector(carsSelector);
+  const filters = useSelector(filterSelector);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +30,7 @@ export default function Sidebar() {
       kitchen: isCheckedKitchen,
       TV: isCheckedTV,
       bathroom: isCheckedBathroom,
-      form: selectedVehicleType, // Single selected vehicle type
+      form: selectedVehicleType,
     };
 
     dispatch(filterCars(selectedFilters));
@@ -84,10 +83,7 @@ export default function Sidebar() {
             className={css.location}
             id={locationId}
             placeholder="City"
-            // onChange={(e) => {
-            //   setCity(e.target.value);
-            // }}
-            name="location" // Change name to "location" to avoid confusion with vehicleType
+            name="location"
           />
           <svg className={css.iconMap}>
             <use href={`${sprite}#icon-map`}></use>

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { filteredCars } from "../cars/slice.js";
 
 const filterSlice = createSlice({
   name: "filter",
@@ -13,11 +12,9 @@ const filterSlice = createSlice({
     },
     filterCity(state, action) {
       state.location = action.payload;
-      // const cars = state.cars.items;
-      // cars.filter((car) => car.location.includes(action.payload));
     },
   },
 });
 
-export const { filterCars, filterCity } = filterSlice.actions; // Исправлено название действия
+export const { filterCars, filterCity } = filterSlice.actions;
 export default filterSlice.reducer;

@@ -5,7 +5,6 @@ const carsSlice = createSlice({
   name: "cars",
   initialState: {
     items: [],
-    // page: 1,
 
     favouriteCars: JSON.parse(localStorage.getItem("favouriteCars")) || [],
     car: {},
@@ -17,21 +16,12 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.items = action.payload;
       })
-      // .addCase(fetchCars.fulfilled, (state, action) => {
-      //   if (state.page === 1) {
-      //     state.items = action.payload;
-      //   } else {
-      //     state.items = [...state.items, ...action.payload];
-      //   }
-      // })
+
       .addCase(fetchCarId.fulfilled, (state, action) => {
         state.car = action.payload;
       });
   },
   reducers: {
-    // plusPage(state, action) {
-    //   state.page = state.page + 1;
-    // },
     addToFavouriteCar(state, action) {
       const isFavourite = state.favouriteCars.some(
         (car) => car.id === action.payload.id
@@ -60,23 +50,20 @@ const carsSlice = createSlice({
 export const filteredCars = createSelector(
   [(state) => state.cars.items, (state) => state.filter.filterItem],
   (cars, filter) => {
-    // Проверяем, если все фильтры либо пусты, либо false, либо null
     const noFiltersApplied = Object.keys(filter).every(
       (key) => filter[key] === false || filter[key] === null
     );
 
-    // Если нет активных фильтров, возвращаем все автомобили
     if (noFiltersApplied) {
       return cars;
     }
 
-    // Если есть фильтры, применяем фильтрацию
     return cars.filter((car) => {
       return Object.keys(filter).every((key) => {
         if (filter[key] === false || filter[key] === null) {
-          return true; // Пропускаем этот критерий фильтрации
+          return true;
         }
-        return car[key] === filter[key]; // Сравниваем с фильтром
+        return car[key] === filter[key];
       });
     });
   }

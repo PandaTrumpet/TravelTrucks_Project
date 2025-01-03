@@ -30,13 +30,10 @@
     bottom: 0;
     left: 0;
     width: 0%;
-
     height: 5px;
     background-color: var(--button);
-
     border-radius: 2px;
-    /* transition: width 0.3s ease-in-out, right 0.3s ease-in-out; */
-    /* Переход для ширины и позиции */
+
 }
 
 

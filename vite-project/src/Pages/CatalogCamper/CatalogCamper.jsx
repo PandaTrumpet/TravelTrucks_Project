@@ -10,7 +10,6 @@ import clsx from "clsx";
 import css from "./CatalogCamper.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarId } from "../../Redux/cars/operation.js";
-import { oneCarSelector } from "../../redux/cars/selectors.js";
 import CarInformation from "../../components/CarInformation/CarInformation.jsx";
 import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 import { Suspense } from "react";
@@ -20,15 +19,11 @@ export default function CatalogCamper() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  // useEffect(() => {
-  //   dispatch(fetchCarId(id));
-  // }, [dispatch, id]);
+
   useEffect(() => {
     dispatch(fetchCarId(id));
 
-    // Проверяем, находимся ли мы на основном пути "/catalog/:id"
     if (location.pathname === `/catalog/${id}`) {
-      // Перенаправляем на "features", если пользователь на основном маршруте
       navigate("features", { replace: true });
     }
   }, [dispatch, id, location.pathname, navigate]);
