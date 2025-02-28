@@ -24,7 +24,6 @@ const customStyles = {
 export default function ImageModal({ photos }) {
   return (
     <>
-      {" "}
       <Modal
         onRequestClose={() => {
           console.log("Hello");

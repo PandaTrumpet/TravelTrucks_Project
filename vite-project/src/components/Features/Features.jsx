@@ -7,7 +7,6 @@ import clsx from "clsx";
 export default function Features() {
   const { id } = useParams();
   const car = useSelector(oneCarSelector);
-  console.log(car);
 
   return (
     <div className={css.container}>

@@ -14,7 +14,7 @@ export default function Car({ car }) {
   const [isFavourite, setIsFavourite] = useState(false);
   const picture = car;
   const favouriteSelect = useSelector(favouriteCarsSelector);
-  console.log(favouriteSelect);
+
   const dispatch = useDispatch();
   const addToFavourite = () => {
     dispatch(addToFavouriteCar(car));

@@ -39,7 +39,6 @@ export default function Sidebar() {
   };
 
   const locationName = useSelector(locationSelector);
-  console.log(locationName);
 
   const handleDivClick = (filterName) => {
     switch (filterName) {

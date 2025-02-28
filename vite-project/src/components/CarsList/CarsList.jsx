@@ -5,7 +5,6 @@ import { fullfiltered } from "../../redux/cars/slice.js";
 
 export default function CarsList() {
   const cars = useSelector(fullfiltered);
-  console.log(cars);
 
   return (
     <div className={css.container}>

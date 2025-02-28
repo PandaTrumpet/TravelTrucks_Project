@@ -5,7 +5,6 @@ import Car from "../../components/Car/Car.jsx";
 import { Toaster } from "react-hot-toast";
 export default function VafouriteCars() {
   const favouriteCars = useSelector(favouriteCarsSelector);
-  console.log(favouriteCars);
 
   return (
     <div className={css.container}>
